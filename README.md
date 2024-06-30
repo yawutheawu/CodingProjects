@@ -1,0 +1,1 @@
+Various Coding projects for fun and teaching, split into several project folders (some of which are W.I.P)
