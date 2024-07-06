@@ -1,0 +1,8 @@
+Guide:
+
+https://www.prisma.io/dataguide/sqlite/setting-up-a-local-sqlite-database#setting-up-sqlite-on-windows
+
+Technical:
+https://www.w3schools.com/sql/default.asp
+
+https://www.sqlite.org/download.html
