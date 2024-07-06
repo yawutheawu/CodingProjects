@@ -1,0 +1,47 @@
+.MainImage {
+     width: 5%;
+     height: 5%;
+     filter: invert(0);
+     transition: width 2s ease-in-out, height 2s ease-in, filter 3s;
+}
+@keyframes page2Div {
+    0%   {background-color:rgb(255, 0, 0); left:0px; top:0px; transform: rotate(0deg); border-radius: 15px;}
+  25%  {background-color:rgb(0, 97, 60); left:200px; top:0px; transform: rotate(-360deg); border-radius: 120px;}
+  50%  {background-color:rgb(0, 26, 255); left:200px; top:200px; transform: rotate(0deg); border-radius: 15px;}
+  75%  {background-color:rgb(0, 248, 0); left:0px; top:200px; transform: rotate(-360deg); border-radius: 120px;}
+  100% {background-color:rgb(255, 0, 0); left:0px; top:0px; transform: rotate(0deg); border-radius: 15px;}
+}
+
+#Animate {
+    background-color: red;
+    padding: 100px;
+    border: 12px cyan ridge;
+    display: inline-block;
+    position: relative;
+    animation-name: page2Div;
+    animation-duration: 10s;
+    animation-direction:normal;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.MainImage:hover {
+    width: 75%;
+    filter: invert(1);
+    align-items: center;
+}
+
+#TestText  {
+    color: darkcyan;
+}
+body#PageOne {
+    background-image: url("https://i.pinimg.com/originals/c4/b1/5c/c4b15cd9e53ffbd35f16017f9f4fa59b.jpg");
+    background-repeat: repeat;
+    background-color: black;
+    background-attachment: fixed;
+    background-position: center center;
+     background-size: cover;
+}
+body#PageTwo {
+    background-color: rgb(10, 167, 106);
+}

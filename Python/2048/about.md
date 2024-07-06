@@ -1,0 +1,1 @@
+A simple recreation of 2048 in python through pygame
