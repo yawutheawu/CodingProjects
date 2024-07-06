@@ -5,6 +5,9 @@ https://www.learncpp.com/
 
 https://indico.cern.ch/event/1019089/
 
+https://www.learn-cpp.org/
 
 Technical Stuff:
 https://code.visualstudio.com/docs/languages/cpp
+
+https://www.freecodecamp.org/news/how-to-install-c-and-cpp-compiler-on-windows/
