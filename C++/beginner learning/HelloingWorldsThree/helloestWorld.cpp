@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <chrono>
+#include <thread>
 
 using namespace std;
 
@@ -12,5 +14,7 @@ int main()
     {
         cout << word << " ";
     }
+    this_thread::sleep_for(chrono::seconds(3));
+    cout << "\n" << "done";
     cout << endl;
 }
