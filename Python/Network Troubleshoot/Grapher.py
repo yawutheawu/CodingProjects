@@ -5,7 +5,7 @@ import json
 
 pingDat = r"pingData.json"
 failDat = r"FailureData.json"
-
+AppIgnore = r"IgnoreList.json"
 
 def load(file):
     with open(file, "r") as f:
@@ -52,11 +52,13 @@ def FailPie(FailFile):
                 appData[j] +=1
             else:
                 appData[j] =1
-    print(appData)
+    ignoreList = load(AppIgnore)
+    for i in ignoreList:
+        del appData[i]
     labels = list(appData.keys())
     Sizes = list(appData.values())
     fig, ax = plt.subplots()
-    ax.pie(Sizes, labels=labels, autopct='%1.1f%%', colors=["green","red"])
+    ax.pie(Sizes, labels=labels, autopct='%1.1f%%')
     plt.show()
 
 def ColorGraphLive(file, numToShow):
