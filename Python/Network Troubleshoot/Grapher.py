@@ -43,7 +43,7 @@ def ColorGraph(data):
     ax.fill_between(timeData, -1, where=lineData < 0, facecolor='red', alpha=.5)
     plt.show()
 
-def FailPie(FailFile, remover=True):
+def FailPie(FailFile, remover=True, sortTo = 0):
     data = load(FailFile)
     appData = {}
     for i in data.values():
@@ -58,6 +58,19 @@ def FailPie(FailFile, remover=True):
             del appData[i]
     labels = list(appData.keys())
     Sizes = list(appData.values())
+    if sortTo > 0 and sortTo < len(Sizes):
+        NewSize = []
+        NewLabel = []
+        for k in range(0,sortTo):
+            NewSize.append(max(Sizes))
+            Sizes.remove(max(Sizes))
+        for i in NewSize:
+            for j in appData.keys():
+                if appData[j] == i and j not in NewLabel:
+                    NewLabel.append(j)
+                    break
+        Sizes = NewSize
+        labels = NewLabel
     fig, ax = plt.subplots()
     ax.pie(Sizes, labels=labels, autopct='%1.1f%%')
     plt.show()
@@ -110,4 +123,9 @@ def ColorGraphLive(file, numToShow):
 
 #piGraph(pingDict)
 ColorGraph(pingDict)
-FailPie(failDat)
+x = 15
+try:
+    x = int(input("How Many Programs should be shown? "))
+except Exception as e:
+    print(f"Exception {e} as occured, defaulting to 15 programs")
+FailPie(failDat, sortTo=x)
