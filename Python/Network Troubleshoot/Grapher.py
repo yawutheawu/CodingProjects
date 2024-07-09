@@ -43,7 +43,7 @@ def ColorGraph(data):
     ax.fill_between(timeData, -1, where=lineData < 0, facecolor='red', alpha=.5)
     plt.show()
 
-def FailPie(FailFile):
+def FailPie(FailFile, remover=True):
     data = load(FailFile)
     appData = {}
     for i in data.values():
@@ -53,8 +53,9 @@ def FailPie(FailFile):
             else:
                 appData[j] =1
     ignoreList = load(AppIgnore)
-    for i in ignoreList:
-        del appData[i]
+    if remover:
+        for i in ignoreList:
+            del appData[i]
     labels = list(appData.keys())
     Sizes = list(appData.values())
     fig, ax = plt.subplots()
