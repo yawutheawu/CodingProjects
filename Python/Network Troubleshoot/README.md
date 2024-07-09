@@ -1,0 +1,1 @@
+Scripts to test network connection and graph the status over the course of the pings to monitor a random disconnection issue 
