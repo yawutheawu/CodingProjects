@@ -8,6 +8,14 @@ Name = str(Parsed.findAll("center")[1].find("b")).replace("<b>", '').replace(
     "</b>", '')
 image = re.get("https://apod.nasa.gov/apod/" + allImage[1]['href'],
                allow_redirects=True)
+Name = Name.replace("/","-")
+Name = Name.replace("<"," ")
+Name = Name.replace(">"," ")
+Name = Name.replace(":",";")
+Name = Name.replace("\\","_")
+Name = Name.replace("|","_")
+Name = Name.replace("?"," ")
+Name = Name.replace("*"," ")
 with open(f"images/{Name}.jpg", 'wb') as f:
     f.write(image.content)
 print("Got Image of Day!")
