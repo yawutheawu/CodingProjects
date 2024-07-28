@@ -25,7 +25,7 @@ def piGraph(data):
     ax.pie(Sizes, labels=labels, autopct='%1.1f%%', colors=["green","red"])
     plt.show()
 
-def ColorGraph(data):
+def ColorGraph(data,pingsToShow = 0):
     lineData = []
     timeData = []
     for k,i in enumerate(data.keys()):
@@ -34,6 +34,9 @@ def ColorGraph(data):
         else:
             lineData.append(-1)
         timeData.append(k)
+    if pingsToShow>0:
+        lineData = lineData[-1*pingsToShow:]
+        timeData = timeData[-1*pingsToShow:]
     lineData = np.array(lineData)
     timeData = np.array(timeData)
     fig, ax = plt.subplots()
@@ -55,7 +58,10 @@ def FailPie(FailFile, remover=True, sortTo = 0):
     ignoreList = load(AppIgnore)
     if remover:
         for i in ignoreList:
-            del appData[i]
+            try:
+                del appData[i]
+            except:
+                print(f"{i} was not running, skipping")
     labels = list(appData.keys())
     Sizes = list(appData.values())
     if sortTo > 0 and sortTo < len(Sizes):
@@ -122,7 +128,12 @@ def ColorGraphLive(file, numToShow):
 #ColorGraphLive(pingDat,50)
 
 #piGraph(pingDict)
-ColorGraph(pingDict)
+y = 0
+try:
+    y = int(input("How Many Pings should be shown? "))
+except Exception as e:
+    print(f"Exception {e} as occured, defaulting to All pings")
+ColorGraph(pingDict, y)
 x = 15
 try:
     x = int(input("How Many Programs should be shown? "))
