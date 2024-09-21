@@ -2,7 +2,11 @@ Guide:
 
 https://www.prisma.io/dataguide/sqlite/setting-up-a-local-sqlite-database#setting-up-sqlite-on-windows
 
+https://www.sqlitetutorial.net/sqlite-nodejs/query/
+
 Technical:
 https://www.w3schools.com/sql/default.asp
 
 https://www.sqlite.org/download.html
+
+https://sqlite.org/wasm/doc/trunk/demo-123.md
