@@ -37,7 +37,11 @@ else:
     filePath = __file__.replace(fileName,"")
 os.chdir(filePath)
 os.chdir("Results")
-files = os.listdir()
+filesToTest = os.listdir()
+files = []
+for i in filesToTest:
+    if os.path.isfile(i):
+        files.append(i)
 fileSelection = files[-1]
 failed = True
 while failed:
