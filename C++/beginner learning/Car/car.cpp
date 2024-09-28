@@ -3,51 +3,86 @@
 
 class Car {
     private:
-        int SecretValue;
+        std::string vin;
+        bool fake = false;
     public:
-        int Value;
-        int Value2 = 10;
+        Car(){
+            fake = true;
+        };
+        Car(std::string Val1, std::string Val2, std::string VIN) {
+            Make = Val1;
+            Model = Val2;
+            vin = VIN;
+        }
+        std::string Make;
+        std::string Model;
         void GetSecret(){
-            std::cout << std::to_string(SecretValue);
+            std::cout << vin;
         }
-        Car(){};
-        Car(int Val1,int Val2) {
-            SecretValue = Val1;
-            Value = Val2;
-        }
-        Car(int Val1,int Val2, int Val3) {
-            SecretValue = Val1;
-            Value = Val2;
-            Value2 = Val3;
+        bool CheckReal() {
+            return fake;
         }
 };
 
 class Parking {
     private:
+        int FilledSpaces;
         int spaces;
         int EmptySpaces;
-        int FilledSpaces;
-        Car a = Car();
+        Car a[0];
     public:
     Parking(){};
-        Parking(int slots, int taken_Slots, Car aTemp) {
+        Parking(int slots) {
             spaces = slots;
-            FilledSpaces = taken_Slots;
-            EmptySpaces = spaces - FilledSpaces;
-            a = aTemp;
+            FilledSpaces = 0;
+            EmptySpaces = spaces;
+            Car a = new Car[spaces];
+        }
+        void ParkCar(Car parking, int spaceSelection) {
+            if (EmptySpaces > 0) {
+                if (a[spaceSelection].CheckReal() == false) {
+                    a[spaceSelection] = parking;
+                    FilledSpaces++;
+                    EmptySpaces = spaces - FilledSpaces;
+                } else {
+                    std::cout << "That Slot is full!\n";
+                }
+            } else {
+                std::cout << "No Slots!\n";
+            }
+        }
+        void unParkCar(int spaceSelection) {
+            if (a[spaceSelection].CheckReal() == true) {
+                a[spaceSelection] = Car();
+                FilledSpaces--;
+                EmptySpaces = spaces - FilledSpaces;
+            } else {
+                std::cout << "That Slot is Already Empty!\n";
+            }
         }
         void GetValues() {
             std::cout << std::to_string(FilledSpaces);
             std::cout << "\n";
-            a.GetSecret();
+            for (Car i : a) {
+                std::cout << i.Make << " " << i.Model << "\n";
+            }
         };
 };
 
 int main() {
-    Car car1 = Car(120,600,1200);
-    Parking lot1 = Parking(12,1, car1);
-    //std::cout << std::to_string(car1.SecretValue);
-    //std::cout << pow(2,4);
+    Car car1 = Car("Toyota","Highlander","KL5JD56Z85K139936");
+    Car car2 = Car("BMW","M3","ZL5JD56Z840059936");
+    Car car3 = Car("Chevrolet","Camaro","KQ5JD56Z85K120736");
+    Car car4 = Car("Bugatti","Chiron","KL5JD56Z85K139936");
+    Parking lot1 = Parking(12);
+    lot1.ParkCar(car1,0);
+    lot1.ParkCar(car2,1);
+    lot1.ParkCar(car3,2);
+    lot1.ParkCar(car4,3);
     lot1.GetValues();
+    lot1.unParkCar(0);
+    lot1.unParkCar(1);
+    lot1.unParkCar(2);
+    lot1.unParkCar(3);
     return 0;
 }
