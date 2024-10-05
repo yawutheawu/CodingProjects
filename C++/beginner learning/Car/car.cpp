@@ -1,5 +1,9 @@
+//For Sleep
 #include <iostream>
-#include <cmath>
+#include <vector>
+#include <string>
+#include <chrono>
+#include <thread>
 
 class Car {
     private:
@@ -13,34 +17,37 @@ class Car {
             Make = Val1;
             Model = Val2;
             vin = VIN;
-        }
+        };
         std::string Make;
         std::string Model;
         void GetSecret(){
             std::cout << vin;
         }
-        bool CheckReal() {
+        bool CheckFake() {
             return fake;
+        }
+        std::string GetMakeModel() {
+            return Make + " " + Model;
         }
 };
 
 class Parking {
     private:
-        int FilledSpaces;
-        int spaces;
-        int EmptySpaces;
-        Car a[0];
+        int FilledSpaces = 0;
+        int spaces = 1;
+        int EmptySpaces = 1;
+        std::vector<Car> a;
     public:
-    Parking(){};
+        Parking(){};
         Parking(int slots) {
-            spaces = slots;
             FilledSpaces = 0;
-            EmptySpaces = spaces;
-            Car a = new Car[spaces];
-        }
+            EmptySpaces = slots;
+            spaces = slots;
+            a.assign(EmptySpaces, Car());
+        };
         void ParkCar(Car parking, int spaceSelection) {
             if (EmptySpaces > 0) {
-                if (a[spaceSelection].CheckReal() == false) {
+                if (a[spaceSelection].CheckFake() == true) {
                     a[spaceSelection] = parking;
                     FilledSpaces++;
                     EmptySpaces = spaces - FilledSpaces;
@@ -52,7 +59,7 @@ class Parking {
             }
         }
         void unParkCar(int spaceSelection) {
-            if (a[spaceSelection].CheckReal() == true) {
+            if (a[spaceSelection].CheckFake() == false) {
                 a[spaceSelection] = Car();
                 FilledSpaces--;
                 EmptySpaces = spaces - FilledSpaces;
@@ -61,13 +68,18 @@ class Parking {
             }
         }
         void GetValues() {
-            std::cout << std::to_string(FilledSpaces);
+            std::cout << "Spaces Filled: " << std::to_string(FilledSpaces) << " Available Slots: " << std::to_string(EmptySpaces);
             std::cout << "\n";
             for (Car i : a) {
-                std::cout << i.Make << " " << i.Model << "\n";
+                std::cout << i.Make << " " << i.Model << " ";
             }
+            std::cout << "\n";
         };
 };
+
+bool TakeInput(Parking whatLot) {
+    return false;
+}
 
 int main() {
     Car car1 = Car("Toyota","Highlander","KL5JD56Z85K139936");
@@ -84,5 +96,11 @@ int main() {
     lot1.unParkCar(1);
     lot1.unParkCar(2);
     lot1.unParkCar(3);
+    std::cout << "End of program";
+    bool parker = TakeInput(lot1);
+    while (parker){
+        parker = TakeInput(lot1);
+    }
+    std::this_thread::sleep_for(std::chrono::seconds(5));
     return 0;
 }
