@@ -71,7 +71,9 @@ class Parking {
             std::cout << "Spaces Filled: " << std::to_string(FilledSpaces) << " Available Slots: " << std::to_string(EmptySpaces);
             std::cout << "\n";
             for (Car i : a) {
-                std::cout << i.Make << " " << i.Model << " ";
+                if (i.Make != ""){
+                    std::cout << i.Make << " " << i.Model << ", ";
+                }
             }
             std::cout << "\n";
         };
