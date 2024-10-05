@@ -18,7 +18,7 @@ vscode/*
 .alpackages
 *.app
 .vscode/
-.gitignore
+.vscode/*
 
 # Local History for Visual Studio Code
 .history/
