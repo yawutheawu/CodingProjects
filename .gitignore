@@ -19,6 +19,13 @@ vscode/*
 *.app
 .vscode/
 .vscode/*
+# -----
+.idea/
+/.DS_Store
+.DS_Store
+# Default ignored files
+/shelf/
+/workspace.xml
 
 # Local History for Visual Studio Code
 .history/
