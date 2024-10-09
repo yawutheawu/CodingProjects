@@ -5,6 +5,7 @@ for d in */; do
     cd $d
     git add .
     git commit -a -m "Automatic Push of $d"
+    git push
     cd ..
 done
 echo "Finished"
