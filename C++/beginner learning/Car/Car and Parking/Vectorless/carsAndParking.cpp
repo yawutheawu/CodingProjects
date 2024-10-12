@@ -6,7 +6,27 @@
 #include <thread>
 #include "parkingVectorless.h"
 
+Car createCar() {
+    std::string NewMake;
+    std::string NewModel;
+    std::string NewVIN;
+    try
+    {
+        std::cout << "Input the Make, Model and VIN seperated by spaces ";
+        std::cin >> NewMake >> NewModel >> NewVIN;
+        return Car(NewMake, NewModel, NewVIN);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what();
+        std::cout << '\nTry Again.\n';
+        return createCar();
+    }
+}
+
 bool TakeInput(Parking whatLot) {
+    std::cout << "Current Parking Lot: \n";
+    whatLot.ListSlots();
     return false;
 }
 
@@ -20,16 +40,17 @@ int main() {
     lot1.ParkCar(car2,1);
     lot1.ParkCar(car3,2);
     lot1.ParkCar(car4,3);
-    lot1.GetValues();
+    lot1.ListSlots();
     lot1.unParkCar(0);
     lot1.unParkCar(1);
     lot1.unParkCar(2);
     lot1.unParkCar(3);
-    std::cout << "End of program";
     bool parker = TakeInput(lot1);
     while (parker){
         parker = TakeInput(lot1);
     }
+    std::cout << createCar().Make << "\n";
+    std::cout << "End of program";
     std::this_thread::sleep_for(std::chrono::seconds(5));
     return 0;
 }

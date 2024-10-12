@@ -41,10 +41,30 @@ class Parking {
                 std::cout << "That Slot is Already Empty!\n";
             }
         }
+
+        void ListSlots(){
+            int EnterCounter = 0;
+            for (int i = 0; i < spaces; i++) {
+                if (a[i].Make != ""){
+                    std::cout << std::to_string(i+1) << ". " << a[i].Make << " " << a[i].Model << "    ";
+                    EnterCounter++;
+                }
+                else {
+                    std::cout << std::to_string(i+1) << ". " << "Empty Slot" << "    ";
+                    EnterCounter++;
+                }
+                if (EnterCounter >= 3) {
+                    std::cout << "\n";
+                    EnterCounter = 0;
+                }
+            }
+            std::cout << "\n";
+        }
+
         void GetValues() {
             std::cout << "Spaces Filled: " << std::to_string(FilledSpaces) << " Available Slots: " << std::to_string(EmptySpaces);
             std::cout << "\n";
-            for (int i = 0; i < sizeof(a)/sizeof(a[0]); i++) {
+            for (int i = 0; i < spaces; i++) {
                 if (a[i].Make != ""){
                     std::cout << a[i].Make << " " << a[i].Model << ", ";
                 }

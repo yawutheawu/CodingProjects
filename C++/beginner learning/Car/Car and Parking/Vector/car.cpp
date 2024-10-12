@@ -6,6 +6,23 @@
 #include <thread>
 #include "parking.h"
 
+Car createCar() {
+    std::string NewMake;
+    std::string NewModel;
+    std::string NewVIN;
+    try
+    {
+        std::cout << "Input the Make, Model and VIN seperated by spaces ";
+        std::cin >> NewMake >> NewModel >> NewVIN;
+        return Car(NewMake, NewModel, NewVIN);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\nTry Again.\n';
+        return createCar();
+    }
+}
+
 bool TakeInput(Parking whatLot) {
     return false;
 }
