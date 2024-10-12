@@ -44,9 +44,9 @@ class Parking {
         void GetValues() {
             std::cout << "Spaces Filled: " << std::to_string(FilledSpaces) << " Available Slots: " << std::to_string(EmptySpaces);
             std::cout << "\n";
-            for (Car i : *a) {
-                if (i.Make != ""){
-                    std::cout << i.Make << " " << i.Model << ", ";
+            for (int i = 0; i < sizeof(a)/sizeof(a[0]); i++) {
+                if (a[i].Make != ""){
+                    std::cout << a[i].Make << " " << a[i].Model << ", ";
                 }
             }
             std::cout << "\n";
