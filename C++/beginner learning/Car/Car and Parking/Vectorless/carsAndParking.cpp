@@ -24,10 +24,61 @@ Car createCar() {
     }
 }
 
+std::string LowerInputString(std::string daString) {
+    std::string outputString = "";
+    for (char ch : daString) {
+        outputString += std::tolower(ch);
+    }
+    return outputString;
+}
+
 bool TakeInput(Parking whatLot) {
     std::cout << "Current Parking Lot: \n";
     whatLot.ListSlots();
-    return false;
+    std::cout << "Do you want to park a car, unpark a car, or exit? (park/unpark/exit)?: ";
+    std::string UserInput = "";
+    std::string UserInputTemp = "";
+    std::cin >> UserInput;
+    std::cout << "\n";
+    UserInput = LowerInputString(UserInput);
+    if (UserInput == "park"){
+        UserInput = "";
+        if (!whatLot.isFull()) {
+            Car CarToPark = createCar();
+            bool inputFlag = true;
+            int SlotNum = 0;
+            while (inputFlag) {
+                whatLot.ListSlots();
+                std::cout << "Input Slot Number to park car in: ";
+                std::cin >> UserInput;
+                try {
+                    SlotNum = std::stoi(UserInput);
+                } catch(const std::exception& e) {
+                    std::cerr << e.what();
+                    std::cout << '\nTry Again.\n';
+                }
+                if (SlotNum > 0 && SlotNum <= whatLot.LastSlot()) {
+                    SlotNum--;
+                    inputFlag = !whatLot.ParkCar(CarToPark, SlotNum);
+                } else {
+                    std::cout << "Choose an Existing Slot\n";
+                }
+            }
+        } else {
+            std::cout << "Lot is Full!\n";
+        }
+        return true;
+    } else if (UserInput == "unpark") {
+        UserInput = "";
+        return true;
+    } else if (UserInput == "exit") {
+        UserInput = "";
+        return false;
+    } else {
+        UserInput = "";
+        std::cout << "Thats not an option!\n";
+        return true;
+    }
 }
 
 int main() {
@@ -49,7 +100,6 @@ int main() {
     while (parker){
         parker = TakeInput(lot1);
     }
-    std::cout << createCar().Make << "\n";
     std::cout << "End of program";
     std::this_thread::sleep_for(std::chrono::seconds(5));
     return 0;

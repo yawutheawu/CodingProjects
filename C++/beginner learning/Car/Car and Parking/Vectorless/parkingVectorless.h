@@ -19,26 +19,31 @@ class Parking {
             spaces = slots;
             a = new Car[slots];
         };
-        void ParkCar(Car parking, int spaceSelection) {
+        bool ParkCar(Car parking, int spaceSelection) {
             if (EmptySpaces > 0) {
                 if (a[spaceSelection].CheckFake() == true) {
                     a[spaceSelection] = parking;
                     FilledSpaces++;
                     EmptySpaces = spaces - FilledSpaces;
+                    return true;
                 } else {
                     std::cout << "That Slot is full!\n";
+                    return false;
                 }
             } else {
                 std::cout << "No Slots!\n";
+                return false;
             }
         }
-        void unParkCar(int spaceSelection) {
+        bool unParkCar(int spaceSelection) {
             if (a[spaceSelection].CheckFake() == false) {
                 a[spaceSelection] = Car();
                 FilledSpaces--;
                 EmptySpaces = spaces - FilledSpaces;
+                return true;
             } else {
                 std::cout << "That Slot is Already Empty!\n";
+                return false;
             }
         }
 
@@ -61,14 +66,15 @@ class Parking {
             std::cout << "\n";
         }
 
-        void GetValues() {
-            std::cout << "Spaces Filled: " << std::to_string(FilledSpaces) << " Available Slots: " << std::to_string(EmptySpaces);
-            std::cout << "\n";
-            for (int i = 0; i < spaces; i++) {
-                if (a[i].Make != ""){
-                    std::cout << a[i].Make << " " << a[i].Model << ", ";
-                }
+        bool isFull() {
+            if (EmptySpaces == 0) {
+                return true;
+            } else {
+                return false;
             }
-            std::cout << "\n";
         };
+
+        int LastSlot() {
+            return spaces;
+        }
 };
