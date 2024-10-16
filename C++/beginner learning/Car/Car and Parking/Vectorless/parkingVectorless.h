@@ -8,8 +8,8 @@
 class Parking {
     private:
         int FilledSpaces = 0;
-        int spaces = 1;
-        int EmptySpaces = 1;
+        int spaces;
+        int EmptySpaces;
         Car *a;
     public:
         Parking(){};
@@ -67,7 +67,17 @@ class Parking {
         }
 
         bool isFull() {
+            std::cout << EmptySpaces << "\n";
             if (EmptySpaces == 0) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        bool isEmpty() {
+            std::cout << FilledSpaces << "\n";
+            if (FilledSpaces == 0) {
                 return true;
             } else {
                 return false;
