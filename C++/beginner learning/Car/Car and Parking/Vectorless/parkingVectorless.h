@@ -67,7 +67,6 @@ class Parking {
         }
 
         bool isFull() {
-            std::cout << EmptySpaces << "\n";
             if (EmptySpaces == 0) {
                 return true;
             } else {
@@ -76,7 +75,6 @@ class Parking {
         };
 
         bool isEmpty() {
-            std::cout << FilledSpaces << "\n";
             if (FilledSpaces == 0) {
                 return true;
             } else {
