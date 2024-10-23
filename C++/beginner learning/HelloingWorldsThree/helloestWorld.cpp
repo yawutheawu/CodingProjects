@@ -18,7 +18,12 @@ int main()
     int a = 5;
     int b = a;
     a = 12;
-    cout << a << " " << b;
+    int c = 5;
+    int* d = &c;
+    c = 15;
+    cout << "\n";
+    cout << a << " " << b << "\n";
+    cout << c << " " << *d;
     cout << "\n" << "done";
     cout << endl;
 }
