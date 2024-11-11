@@ -1,34 +1,45 @@
-"""
-=================
-barbs(X, Y, U, V)
-=================
-Plot a 2D field of wind barbs.
-
-See `~matplotlib.axes.Axes.barbs`.
-"""
 import matplotlib.pyplot as plt
 import numpy as np
 
-plt.style.use('_mpl-gallery-nogrid')
+x = np.linspace(-5, 5, 5)
+X, Y = np.meshgrid(x, x)
+U, V = 12 * X, 12 * Y
 
-# make data:
-X, Y = np.meshgrid([1, 2, 3, 4], [1, 2, 3, 4])
-angle = np.pi / 180 * np.array([[15., 30, 35, 45],
-                                [25., 40, 55, 60],
-                                [35., 50, 65, 75],
-                                [45., 60, 75, 90]])
-amplitude = np.array([[5, 10, 25, 50],
-                      [10, 15, 30, 60],
-                      [15, 26, 50, 70],
-                      [20, 45, 80, 100]])
-U = amplitude * np.sin(angle)
-V = amplitude * np.cos(angle)
+data = [(-1.5, .5, -6, -6),
+        (1, -1, -46, 46),
+        (-3, -1, 11, -11),
+        (1, 1.5, 80, 80),
+        (0.5, 0.25, 25, 15),
+        (-1.5, -0.5, -5, 40)]
 
-# plot:
-fig, ax = plt.subplots()
+data = np.array(data, dtype=[('x', np.float32), ('y', np.float32),
+                             ('u', np.float32), ('v', np.float32)])
 
-ax.barbs(X, Y, U, V, barbcolor='C0', flagcolor='C0', length=7, linewidth=1.5)
+fig1, axs1 = plt.subplots(nrows=2, ncols=2)
+# Default parameters, uniform grid
+axs1[0, 0].barbs(X, Y, U, V)
 
-ax.set(xlim=(0, 4.5), ylim=(0, 4.5))
+# Arbitrary set of vectors, make them longer and change the pivot point
+# (point around which they're rotated) to be the middle
+axs1[0, 1].barbs(
+    data['x'], data['y'], data['u'], data['v'], length=8, pivot='middle')
+
+# Showing colormapping with uniform grid.  Fill the circle for an empty barb,
+# don't round the values, and change some of the size parameters
+axs1[1, 0].barbs(
+    X, Y, U, V, np.sqrt(U ** 2 + V ** 2), fill_empty=True, rounding=False,
+    sizes=dict(emptybarb=0.25, spacing=0.2, height=0.3))
+
+# Change colors as well as the increments for parts of the barbs
+axs1[1, 1].barbs(data['x'], data['y'], data['u'], data['v'], flagcolor='r',
+                 barbcolor=['b', 'g'], flip_barb=True,
+                 barb_increments=dict(half=10, full=20, flag=100))
+
+# Masked arrays are also supported
+masked_u = np.ma.masked_array(data['u'])
+masked_u[4] = 1000  # Bad value that should not be plotted when masked
+masked_u[4] = np.ma.masked
+fig2, ax2 = plt.subplots()
+ax2.barbs(data['x'], data['y'], masked_u, data['v'], length=8, pivot='middle')
 
 plt.show()
