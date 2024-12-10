@@ -17,14 +17,14 @@ dirConts = [x for x in dirConts if not x == ".DS_Store"]
 for i in dirConts:
     with open(i) as f:
         for j in f.readlines():
-            hyperMerge.append(j)
+            hyperMerge.append(j.strip().split("=")[0])
 
-[uniqueMerge.append(val) for val in hyperMerge if val not in uniqueMerge and val != []]
-
+[uniqueMerge.append(val) for val in hyperMerge if val not in uniqueMerge and val != [] and val != ""]
+uniqueMerge = sorted(uniqueMerge)
 with open("requirements.txt","w") as f:
     f.write("")
 
 for i in uniqueMerge:
     with open("requirements.txt","a") as f:
-        f.write(i)
+        f.write(str(i) + "\n")
 print("done")
