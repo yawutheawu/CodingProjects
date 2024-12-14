@@ -29,7 +29,7 @@ std::string addCommas(double number) {
 int main() {
     vector<Employee> employedPeoples;
     Employee numba1 = Employee("CA95294342","john", "worker", "Cashier", 17.50, true);
-    Employee numba2 = Employee("CA95485738","john", "unworker", "Manager",123456789.123456789, true);
+    Employee numba2 = Employee("CA95485738","john", "unworker", "Manager",123456789.12, true);
     employedPeoples.push_back(numba1);
     employedPeoples.push_back(numba2);
     for (Employee employ : employedPeoples) {

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cmath>
 
 using namespace std;
 
@@ -22,7 +23,7 @@ class Employee {
             LastName = NombreDos;
             Title = Rank;
             EmployeeID = ID;
-            compensation = Payment;
+            compensation = std::round(Payment*100.0)/100.0;
             Wagie = Waged;
         }
         std::string getName() {
