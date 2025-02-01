@@ -8,5 +8,5 @@ func _ready() -> void:
 
 
 func _on_body_entered(_body: Node2D) -> void:
-	print("+1 Coin")
+	%"Game Manager".add_point()
 	queue_free()

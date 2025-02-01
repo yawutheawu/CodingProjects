@@ -1,12 +1,15 @@
-[gd_scene load_steps=14 format=4 uid="uid://cqifafpe7b0n2"]
+[gd_scene load_steps=17 format=4 uid="uid://cqifafpe7b0n2"]
 
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_jpcjj"]
 [ext_resource type="PackedScene" uid="uid://bvwplmnn14kjl" path="res://Scenes/player.tscn" id="1_wghid"]
 [ext_resource type="Texture2D" uid="uid://bdvi5dbxnifyk" path="res://Assets/sprites/world_tileset.png" id="2_i6h5w"]
+[ext_resource type="FontFile" uid="uid://dbm6tcbbuf7e3" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="3_in1w5"]
 [ext_resource type="PackedScene" uid="uid://c4u2yag7ukwk" path="res://Scenes/Platform.tscn" id="3_uiobw"]
 [ext_resource type="PackedScene" uid="uid://qvd350jw1ik8" path="res://Scenes/coin.tscn" id="4_uwtov"]
 [ext_resource type="PackedScene" uid="uid://coduhsvgp1s8l" path="res://Scenes/kill_zone.tscn" id="5_g0ism"]
 [ext_resource type="PackedScene" uid="uid://d33w1wf7rj42r" path="res://Scenes/green_slime.tscn" id="6_uehrd"]
 [ext_resource type="PackedScene" uid="uid://cbjsk3vf0xg3r" path="res://Scenes/slime_col.tscn" id="7_pqcw6"]
+[ext_resource type="FontFile" uid="uid://c8i2iehjx01tb" path="res://Assets/fonts/PixelOperator8.ttf" id="8_k362m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wpee"]
 texture = ExtResource("2_i6h5w")
@@ -224,13 +227,20 @@ _data = {
 
 [node name="Game" type="Node2D"]
 
+[node name="Game Manager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_jpcjj")
+
 [node name="Player" parent="." instance=ExtResource("1_wghid")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+z_index = 2
+z_as_relative = false
 zoom = Vector2(4, 4)
 limit_bottom = 175
 limit_smoothed = true
 position_smoothing_enabled = true
+editor_draw_limits = true
 
 [node name="Background2" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -323,3 +333,29 @@ position = Vector2(78, -38)
 
 [node name="SlimeCol6" parent="Extra Collisions for slimes" instance=ExtResource("7_pqcw6")]
 position = Vector2(690, -104)
+
+[node name="Labels" type="Node" parent="."]
+
+[node name="Hints" type="Label" parent="Labels"]
+offset_left = -66.0
+offset_top = -82.0
+offset_right = 162.0
+offset_bottom = -7.0
+theme_override_colors/font_color = Color(0, 0.521569, 1, 1)
+theme_override_fonts/font = ExtResource("8_k362m")
+theme_override_font_sizes/font_size = 8
+text = "Space/Up to jump,
+Left/Right to move
+WASD or Arrows"
+
+[node name="Coins Display" type="Label" parent="Labels"]
+unique_name_in_owner = true
+offset_left = 443.0
+offset_top = -139.0
+offset_right = 683.0
+offset_bottom = 101.0
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0.627451, 0.529412, 1)
+theme_override_fonts/font = ExtResource("3_in1w5")
+theme_override_font_sizes/font_size = 8
+text = "0"
