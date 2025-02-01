@@ -1,0 +1,3 @@
+https://docs.godotengine.org/en/stable/getting_started/first_3d_game/01.game_setup.html
+https://www.youtube.com/watch?v=sVsn9NqpVhg
+https://docs.godotengine.org/en/stable/getting_started/introduction/learn_to_code_with_gdscript.html#learn-in-your-browser-with-the-gdscript-app

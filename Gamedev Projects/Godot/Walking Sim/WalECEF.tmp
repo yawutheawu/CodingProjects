@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://dheapg7l6wjr7"]
+
+[ext_resource type="Script" path="res://CharacterBody3D.gd" id="1_kp6rv"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kbox8"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00203, 0)
+script = ExtResource("1_kp6rv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CylinderShape3D_kbox8")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.840023, 0.497152)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, -0.000976563, 0)
+use_collision = true
+size = Vector3(1, 0.00195313, 1)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 12.323, 0)
+light_color = Color(0.168165, 0.760453, 0.578896, 1)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 3.811
+light_size = 0.315
+light_specular = 0.0
+shadow_enabled = true
+spot_range = 23.8413
+spot_angle = 59.0949
