@@ -99,6 +99,7 @@ animations = [{
 radius = 5.0
 
 [node name="Coin" type="Area2D"]
+collision_layer = 4
 collision_mask = 2
 script = ExtResource("2_pwivj")
 
