@@ -227,6 +227,20 @@ _data = {
 
 [node name="Game" type="Node2D"]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CoinHud" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 36.0
+offset_top = 27.0
+offset_right = 76.0
+offset_bottom = 59.0
+theme_override_colors/font_color = Color(0, 0.529412, 1, 1)
+theme_override_fonts/font = ExtResource("3_in1w5")
+theme_override_font_sizes/font_size = 40
+text = "0
+"
+
 [node name="Game Manager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_jpcjj")
@@ -234,8 +248,7 @@ script = ExtResource("1_jpcjj")
 [node name="Player" parent="." instance=ExtResource("1_wghid")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-z_index = 2
-z_as_relative = false
+z_index = 1
 zoom = Vector2(4, 4)
 limit_bottom = 175
 limit_smoothed = true
