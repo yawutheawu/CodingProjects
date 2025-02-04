@@ -1,7 +1,29 @@
-[gd_scene load_steps=26 format=3 uid="uid://bvwplmnn14kjl"]
+[gd_scene load_steps=33 format=3 uid="uid://bvwplmnn14kjl"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_x0tbu"]
 [ext_resource type="Texture2D" uid="uid://b6wj21t1d3rdc" path="res://Assets/sprites/knight.png" id="1_y3ytg"]
+[ext_resource type="AudioStream" uid="uid://cnjf2pb7mshmy" path="res://Assets/sounds/jump.wav" id="3_wxaaq"]
+[ext_resource type="AudioStream" uid="uid://swstbhqg55jn" path="res://Assets/sounds/explosion.wav" id="4_v1flq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kidu"]
+atlas = ExtResource("1_y3ytg")
+region = Rect2(0, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irw7v"]
+atlas = ExtResource("1_y3ytg")
+region = Rect2(64, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6o8d"]
+atlas = ExtResource("1_y3ytg")
+region = Rect2(64, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqr2h"]
+atlas = ExtResource("1_y3ytg")
+region = Rect2(96, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyman"]
+atlas = ExtResource("1_y3ytg")
+region = Rect2(128, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_herm7"]
 atlas = ExtResource("1_y3ytg")
@@ -91,6 +113,31 @@ region = Rect2(224, 96, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_1kidu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irw7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6o8d")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_eqr2h")
+}],
+"loop": true,
+"name": &"Die",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jyman")
+}],
+"loop": true,
+"name": &"Fall",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_herm7")
 }, {
 "duration": 1.0,
@@ -172,16 +219,24 @@ animations = [{
 radius = 5.0
 
 [node name="Player" type="CharacterBody2D"]
-z_index = 3
+z_index = 1
 collision_layer = 2
 script = ExtResource("1_x0tbu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_6wgvd")
-animation = &"Idle"
+animation = &"Fall"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_co0q3")
+
+[node name="Jump Noise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_wxaaq")
+bus = &"Sound effects"
+
+[node name="Death Noise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_v1flq")
+bus = &"Sound effects"
