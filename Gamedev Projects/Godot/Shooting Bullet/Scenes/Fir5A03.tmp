@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://bao78l2rc881u"]
+
+[ext_resource type="Script" path="res://Scripts/character_body_3d.gd" id="1_xxchx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qkwwl"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_78pc6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_baj1d"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("1_xxchx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_qkwwl")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+
+[node name="ProjectileSpawnPoint" type="Node3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.215519, -2.06052)
+
+[node name="BasePlate" type="CSGBox3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, 0.5, 0, 0, 0, 50, 0.255455, -6.80032, 0)
+use_collision = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.66592, 0)
+light_color = Color(0.986884, 0.596217, 0.585262, 1)
+omni_range = 4096.0
+omni_attenuation = 0.466
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+collision_layer = 3
+mass = 0.001
+physics_material_override = SubResource("PhysicsMaterial_78pc6")
+gravity_scale = 0.345
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.64803, -4.73396)
+shape = SubResource("BoxShape3D_baj1d")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="RigidBody3D/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00102043, -0.0102997)
+use_collision = true
+collision_priority = 0.0
