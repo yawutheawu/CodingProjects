@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcu5kxce1nhkd"]
+
+[ext_resource type="PackedScene" uid="uid://bp4tlfw5hnunh" path="res://Assets/dungeon_assets/props/chest_gold.glb" id="1_1fsny"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8jywv"]
+size = Vector3(1.62601, 1.1, 1.2)
+
+[node name="Greybox" type="Node3D"]
+
+[node name="ringLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 1, 0)
+light_color = Color(0.083058, 0.452107, 0.327112, 1)
+light_energy = 1.632
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 3.459
+light_size = 1.0
+light_specular = 16.0
+shadow_enabled = true
+omni_range = 10.612
+omni_attenuation = 8.5
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.984808, 0.0301537, -0.17101, 1.62619e-08, 0.984808, 0.173648, 0.173648, 0.17101, -0.969846, -0.7, 3.3, -6.7)
+
+[node name="Red" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.939693, -0.296198, -0.17101, 0, -0.5, 0.866025, -0.34202, -0.813798, -0.469846, 0.278666, 13.8303, -10.664)
+light_color = Color(1, 0.381338, 0.313292, 1)
+light_energy = 0.1
+light_indirect_energy = 0.3
+light_volumetric_fog_energy = 2.0
+shadow_enabled = true
+
+[node name="Blue" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.939731, -0.261994, 0.219694, 4.89022e-06, 0.642548, 0.766245, -0.341915, -0.720063, 0.603824, 0, 14.1038, 10.2235)
+light_color = Color(0.478431, 1, 1, 1)
+light_energy = 0.1
+light_indirect_energy = 0.3
+light_volumetric_fog_energy = 2.0
+shadow_enabled = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="Floor" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0.15, 0.1)
+use_collision = true
+size = Vector3(6, 0.1, 17.6)
+
+[node name="Wall" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.590991, 2.42594, 0.1)
+use_collision = true
+size = Vector3(6.13892, 5.55188, 1)
+
+[node name="Cylinder Cut" type="CSGCylinder3D" parent="CSGCombiner3D/Wall"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.609009, -1.22594, -0.1)
+operation = 2
+radius = 1.1
+height = 4.8
+sides = 64
+
+[node name="chest_gold2" parent="." instance=ExtResource("1_1fsny")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 2.1, 0.1, -4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="chest_gold2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0130091, 0.65, 0.0267932)
+shape = SubResource("BoxShape3D_8jywv")

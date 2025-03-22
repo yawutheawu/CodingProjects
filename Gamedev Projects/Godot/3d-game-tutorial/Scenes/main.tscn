@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://xqe6277kju7a"]
+
+[ext_resource type="PackedScene" uid="uid://bcu5kxce1nhkd" path="res://Scenes/Greybox.tscn" id="1_5nbh5"]
+
+[node name="Main" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0170088, 0.0434384, -0.0400887)
+
+[node name="Greybox" parent="." instance=ExtResource("1_5nbh5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3995, 0.0770206, -0.0745735)
