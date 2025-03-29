@@ -1,9 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://xqe6277kju7a"]
+[gd_scene load_steps=5 format=3 uid="uid://xqe6277kju7a"]
 
 [ext_resource type="PackedScene" uid="uid://bcu5kxce1nhkd" path="res://Scenes/Greybox.tscn" id="1_5nbh5"]
+[ext_resource type="PackedScene" uid="uid://y3y1thfwslg5" path="res://Scenes/player.tscn" id="2_47nm0"]
+[ext_resource type="PackedScene" uid="uid://b6oou0avb2pec" path="res://Scenes/wall.tscn" id="3_k77vb"]
+[ext_resource type="PackedScene" uid="uid://dmc7q0ngyimqy" path="res://Scenes/Chest.tscn" id="4_10egt"]
 
 [node name="Main" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0170088, 0.0434384, -0.0400887)
 
 [node name="Greybox" parent="." instance=ExtResource("1_5nbh5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3995, 0.0770206, -0.0745735)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00050066, -0.322979, -0.0745735)
+
+[node name="Player" parent="." instance=ExtResource("2_47nm0")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -9.35048e-07, 1.5, -6)
+
+[node name="Wall" parent="." instance=ExtResource("3_k77vb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.263839, -0.12298, 8.28288)
+
+[node name="Chests" type="Node" parent="."]
+
+[node name="Chest" parent="Chests" instance=ExtResource("4_10egt")]
+transform = Transform3D(-0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, -0.642788, -0.8, -0.1, -2.1)
+
+[node name="Chest2" parent="Chests" instance=ExtResource("4_10egt")]
+transform = Transform3D(0.17101, 0.00259802, -0.985266, -0.0301537, 0.999542, -0.00259809, 0.984808, 0.0301537, 0.17101, 2.3, -0.1, -6.2)
+
+[node name="Chest3" parent="Chests" instance=ExtResource("4_10egt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 5.2)

@@ -1,12 +1,6 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://cwa4i40q7p3xd"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bv8hqs1gh184d"]
+
+[ext_resource type="Texture2D" uid="uid://dyy4ux1bomtv3" path="res://Assets/dungeon_assets/dungeon_albedo.png" id="1_r1mug"]
 
 [resource]
-transparency = 1
-albedo_color = Color(0.462745, 0.407843, 0.0705882, 1)
-metallic = 1.0
-roughness = 0.2
-emission_enabled = true
-emission = Color(0.462812, 0.405952, 0.0704728, 1)
-ao_enabled = true
-refraction_enabled = true
-detail_enabled = true
+albedo_texture = ExtResource("1_r1mug")

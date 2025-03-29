@@ -35,7 +35,7 @@ _subresources={
 "materials": {
 "DungeonMat": {
 "use_external/enabled": true,
-"use_external/path": "res://Assets/dungeon_assets/matteChest.tres"
+"use_external/path": "res://Assets/dungeon_assets/MatteChest.tres"
 }
 }
 }
