@@ -75,7 +75,7 @@ if output == 0:
                     loss()
                 else:
                     print("The lead in the pipes gets to you")
-                    loss()
+                    loss() 
             else:
                 prompt = "How much money do you wish to gamble for your whopper to win?: "
                 question = "Choose a number: "
