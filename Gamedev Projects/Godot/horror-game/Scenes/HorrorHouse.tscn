@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvhxyn70ou5jr"]
+
+[ext_resource type="PackedScene" uid="uid://y3y1thfwslg5" path="res://Scenes/player.tscn" id="1_xahn0"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xahn0"]
+data = PackedVector3Array(-10, -0.05, 10, -10, -0.05, -10, -10, 0.05, -10, 10, -0.05, -10, -10, -0.05, -10, -10, -0.05, 10, -10, 0.05, -10, -10, -0.05, -10, 10, -0.05, -10, -10, 0.05, -10, -10, 0.05, 10, -10, -0.05, 10, -10, -0.05, 10, -10, 0.05, 10, 10, 0.05, 10, 10, 0.05, 10, -10, 0.05, 10, -10, 0.05, -10, -10, -0.05, 10, 10, -0.05, 10, 10, -0.05, -10, 10, 0.05, 10, 10, -0.05, 10, -10, -0.05, 10, 10, -0.05, -10, 10, -0.05, 10, 10, 0.05, 10, 10, -0.05, -10, 10, 0.05, -10, -10, 0.05, -10, -10, 0.05, -10, 10, 0.05, -10, 10, 0.05, 10, 10, 0.05, 10, 10, 0.05, -10, 10, -0.05, -10)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4uyje"]
+data = PackedVector3Array(-1.28143, -0.05, 5.12938, -1.28143, -0.05, -5.12938, -1.28143, 0.05, -5.12938, 1.28143, -0.05, -5.12938, -1.28143, -0.05, -5.12938, -1.28143, -0.05, 5.12938, -1.28143, 0.05, -5.12938, -1.28143, -0.05, -5.12938, 1.28143, -0.05, -5.12938, -1.28143, 0.05, -5.12938, -1.28143, 0.05, 5.12938, -1.28143, -0.05, 5.12938, -1.28143, -0.05, 5.12938, -1.28143, 0.05, 5.12938, 1.28143, 0.05, 5.12938, 1.28143, 0.05, 5.12938, -1.28143, 0.05, 5.12938, -1.28143, 0.05, -5.12938, -1.28143, -0.05, 5.12938, 1.28143, -0.05, 5.12938, 1.28143, -0.05, -5.12938, 1.28143, 0.05, 5.12938, 1.28143, -0.05, 5.12938, -1.28143, -0.05, 5.12938, 1.28143, -0.05, -5.12938, 1.28143, -0.05, 5.12938, 1.28143, 0.05, 5.12938, 1.28143, -0.05, -5.12938, 1.28143, 0.05, -5.12938, -1.28143, 0.05, -5.12938, -1.28143, 0.05, -5.12938, 1.28143, 0.05, -5.12938, 1.28143, 0.05, 5.12938, 1.28143, 0.05, 5.12938, 1.28143, 0.05, -5.12938, 1.28143, -0.05, -5.12938)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Greyboxing" type="Node" parent="."]
+
+[node name="Walking Surfaces" type="Node" parent="Greyboxing"]
+
+[node name="Floor 1" type="StaticBody3D" parent="Greyboxing/Walking Surfaces"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.40155, -0.0103455, -0.685791)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Greyboxing/Walking Surfaces/Floor 1"]
+size = Vector3(20, 0.1, 20)
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Greyboxing/Walking Surfaces/Floor 1"]
+shape = SubResource("ConcavePolygonShape3D_xahn0")
+
+[node name="Floor 2" type="StaticBody3D" parent="Greyboxing/Walking Surfaces"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.569, 5.057, 28.014)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Greyboxing/Walking Surfaces/Floor 2"]
+size = Vector3(20, 0.1, 20)
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Greyboxing/Walking Surfaces/Floor 2"]
+shape = SubResource("ConcavePolygonShape3D_xahn0")
+
+[node name="Basement" type="StaticBody3D" parent="Greyboxing/Walking Surfaces"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83277, -3.36759, -26.3559)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Greyboxing/Walking Surfaces/Basement"]
+size = Vector3(20, 0.1, 20)
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Greyboxing/Walking Surfaces/Basement"]
+shape = SubResource("ConcavePolygonShape3D_xahn0")
+
+[node name="Stairs to basement" type="StaticBody3D" parent="Greyboxing/Walking Surfaces"]
+transform = Transform3D(1, 0, 0, 0, 0.955418, 0.295258, 0, -0.295258, 0.955418, -1.83277, -2.08342, -16.6338)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Greyboxing/Walking Surfaces/Stairs to basement"]
+transform = Transform3D(1, 0, 0, 0, 0.974925, 0.222536, 0, -0.222536, 0.974925, 1.50861, -0.925873, 1.35009)
+size = Vector3(2.56287, 0.1, 10.2588)
+
+[node name="CSGBakedCollisionShape3D2" type="CollisionShape3D" parent="Greyboxing/Walking Surfaces/Stairs to basement"]
+transform = Transform3D(1, 0, 0, 0, 0.974925, 0.222536, 0, -0.222536, 0.974925, 1.50861, -0.925873, 1.35009)
+shape = SubResource("ConcavePolygonShape3D_4uyje")
+
+[node name="Stairs to Floor2" type="StaticBody3D" parent="Greyboxing/Walking Surfaces"]
+transform = Transform3D(1, 0, 0, 0, 0.955418, 0.295258, 0, -0.295258, 0.955418, -1.97467, 2.9815, 12.0666)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Greyboxing/Walking Surfaces/Stairs to Floor2"]
+transform = Transform3D(1, 0, 0, 0, 0.974925, 0.222536, 0, -0.222536, 0.974925, 1.50861, -0.925873, 1.35009)
+size = Vector3(2.56287, 0.1, 10.2588)
+
+[node name="CSGBakedCollisionShape3D2" type="CollisionShape3D" parent="Greyboxing/Walking Surfaces/Stairs to Floor2"]
+transform = Transform3D(1, 0, 0, 0, 0.974925, 0.222536, 0, -0.222536, 0.974925, 1.50861, -0.925873, 1.35009)
+shape = SubResource("ConcavePolygonShape3D_4uyje")
+
+[node name="Player" parent="." instance=ExtResource("1_xahn0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.182227, 1.04873, -0.00328255)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.111279, 0.131399, -0.429959)
+light_color = Color(0.738623, 0.54482, 0.0792085, 1)
+light_energy = 0.51
+light_indirect_energy = 2.469
+light_volumetric_fog_energy = 16.0
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_transmittance_bias = 4.621
+shadow_opacity = 0.76
+shadow_blur = 5.65
+distance_fade_shadow = 0.0
+
+[node name="Lighting" type="Node" parent="."]
