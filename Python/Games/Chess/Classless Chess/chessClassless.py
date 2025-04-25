@@ -216,3 +216,6 @@ def checkMoves(ChessBoard,selection):
         return possibleMoves
     else:
         return "BadSelection"
+
+displayCurrentBoard(board)
+print(checkMoves(board,"a8"))
