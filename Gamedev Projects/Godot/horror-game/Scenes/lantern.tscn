@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://caqpwtsqj6w0t"]
+
+[ext_resource type="ArrayMesh" uid="uid://d137n1ast0y8e" path="res://Assets/Lantern/Lantern_Body.obj" id="1_q5ajm"]
+[ext_resource type="Material" uid="uid://dj03ap554jj5i" path="res://Assets/Lantern/Textures/FlameHolder.tres" id="2_vttwc"]
+[ext_resource type="Material" uid="uid://d3d3x0ujbf6gj" path="res://Assets/Lantern/Textures/Iron.tres" id="3_s6onl"]
+[ext_resource type="Material" uid="uid://ccx3nnltjnuby" path="res://Assets/Lantern/Textures/Wood.tres" id="4_bfd3w"]
+[ext_resource type="Material" uid="uid://dtx8dj6on0gdf" path="res://Assets/Lantern/Textures/LaqueredWood.tres" id="5_rh7lw"]
+[ext_resource type="Shader" uid="uid://drcbdl7biglvc" path="res://Assets/Fire/Shaders/fire.tres" id="6_s6onl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bfd3w"]
+render_priority = 0
+shader = ExtResource("6_s6onl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vttwc"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_s6onl"]
+
+[node name="Lantern" type="Node3D"]
+
+[node name="LanternBody" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00282168, -0.00448996, 1.7345e-05)
+mesh = ExtResource("1_q5ajm")
+surface_material_override/0 = ExtResource("2_vttwc")
+surface_material_override/1 = ExtResource("3_s6onl")
+surface_material_override/2 = ExtResource("3_s6onl")
+surface_material_override/3 = ExtResource("3_s6onl")
+surface_material_override/4 = ExtResource("4_bfd3w")
+surface_material_override/5 = ExtResource("4_bfd3w")
+surface_material_override/6 = ExtResource("4_bfd3w")
+surface_material_override/7 = ExtResource("4_bfd3w")
+surface_material_override/8 = ExtResource("4_bfd3w")
+surface_material_override/9 = ExtResource("4_bfd3w")
+surface_material_override/10 = ExtResource("4_bfd3w")
+surface_material_override/11 = ExtResource("4_bfd3w")
+surface_material_override/12 = ExtResource("4_bfd3w")
+surface_material_override/13 = ExtResource("4_bfd3w")
+surface_material_override/14 = ExtResource("4_bfd3w")
+surface_material_override/15 = ExtResource("4_bfd3w")
+surface_material_override/16 = ExtResource("4_bfd3w")
+surface_material_override/17 = ExtResource("4_bfd3w")
+surface_material_override/18 = ExtResource("4_bfd3w")
+surface_material_override/19 = ExtResource("5_rh7lw")
+surface_material_override/20 = ExtResource("5_rh7lw")
+surface_material_override/21 = ExtResource("5_rh7lw")
+surface_material_override/22 = ExtResource("5_rh7lw")
+surface_material_override/23 = ExtResource("4_bfd3w")
+surface_material_override/24 = ExtResource("3_s6onl")
+
+[node name="Particle System" type="Node3D" parent="."]
+
+[node name="Flame" type="GPUParticles3D" parent="Particle System"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0175402, 0)
+material_override = SubResource("ShaderMaterial_bfd3w")
+amount = 1
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_vttwc")
+draw_pass_1 = SubResource("QuadMesh_s6onl")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvhxyn70ou5jr"]
+[gd_scene load_steps=5 format=3 uid="uid://bvhxyn70ou5jr"]
 
 [ext_resource type="PackedScene" uid="uid://y3y1thfwslg5" path="res://Scenes/player.tscn" id="1_xahn0"]
+[ext_resource type="PackedScene" uid="uid://caqpwtsqj6w0t" path="res://Scenes/lantern.tscn" id="2_4uyje"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xahn0"]
 data = PackedVector3Array(-10, -0.05, 10, -10, -0.05, -10, -10, 0.05, -10, 10, -0.05, -10, -10, -0.05, -10, -10, -0.05, 10, -10, 0.05, -10, -10, -0.05, -10, 10, -0.05, -10, -10, 0.05, -10, -10, 0.05, 10, -10, -0.05, 10, -10, -0.05, 10, -10, 0.05, 10, 10, 0.05, 10, 10, 0.05, 10, -10, 0.05, 10, -10, 0.05, -10, -10, -0.05, 10, 10, -0.05, 10, 10, -0.05, -10, 10, 0.05, 10, 10, -0.05, 10, -10, -0.05, 10, 10, -0.05, -10, 10, -0.05, 10, 10, 0.05, 10, 10, -0.05, -10, 10, 0.05, -10, -10, 0.05, -10, -10, 0.05, -10, 10, 0.05, -10, 10, 0.05, 10, 10, 0.05, 10, 10, 0.05, -10, 10, -0.05, -10)
@@ -66,17 +67,7 @@ shape = SubResource("ConcavePolygonShape3D_4uyje")
 [node name="Player" parent="." instance=ExtResource("1_xahn0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.182227, 1.04873, -0.00328255)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.111279, 0.131399, -0.429959)
-light_color = Color(0.738623, 0.54482, 0.0792085, 1)
-light_energy = 0.51
-light_indirect_energy = 2.469
-light_volumetric_fog_energy = 16.0
-shadow_enabled = true
-shadow_bias = 0.0
-shadow_transmittance_bias = 4.621
-shadow_opacity = 0.76
-shadow_blur = 5.65
-distance_fade_shadow = 0.0
+[node name="Lantern" parent="Player" instance=ExtResource("2_4uyje")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.368886, 0.312718, -0.585466)
 
 [node name="Lighting" type="Node" parent="."]
