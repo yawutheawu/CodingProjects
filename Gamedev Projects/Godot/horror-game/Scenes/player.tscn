@@ -1,6 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://y3y1thfwslg5"]
+[gd_scene load_steps=6 format=3 uid="uid://y3y1thfwslg5"]
 
 [ext_resource type="Script" uid="uid://cuq4lid1oocau" path="res://Scripts/playermove.gd" id="1_no3j7"]
+
+[sub_resource type="Environment" id="Environment_v0iea"]
+background_mode = 1
+background_energy_multiplier = 0.0
+ssao_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+fog_mode = 1
+fog_light_color = Color(0.244768, 0.268561, 0.305965, 1)
+fog_density = 1.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.35
+volumetric_fog_albedo = Color(0.230315, 0.230315, 0.230315, 1)
+volumetric_fog_emission_energy = 0.0
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ya5ov"]
 
@@ -12,7 +26,7 @@ emission_energy_multiplier = 16.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v0iea"]
 radius = 0.511127
-height = 1.63268
+height = 2.0413
 
 [node name="Player" type="CharacterBody3D"]
 floor_max_angle = 1.0472
@@ -21,13 +35,14 @@ safe_margin = 0.1
 script = ExtResource("1_no3j7")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.533122, -0.264673)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.813634, -0.264673)
+environment = SubResource("Environment_v0iea")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, -0.04, 0.1)
+transform = Transform3D(1, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.240512, 0.1)
 mesh = SubResource("CapsuleMesh_ya5ov")
 material = SubResource("StandardMaterial3D_w52gi")
 
 [node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04, 0.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.027018, 0.1)
 shape = SubResource("CapsuleShape3D_v0iea")

@@ -68,6 +68,4 @@ shape = SubResource("ConcavePolygonShape3D_4uyje")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.182227, 1.04873, -0.00328255)
 
 [node name="Lantern" parent="Player" instance=ExtResource("2_4uyje")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.368886, 0.312718, -0.585466)
-
-[node name="Lighting" type="Node" parent="."]
+transform = Transform3D(9.442e-05, -4.85639e-05, 1, -9.06293e-05, 1, 4.85639e-05, -1, -9.06293e-05, 9.442e-05, 0.320859, 0.612966, -0.488756)

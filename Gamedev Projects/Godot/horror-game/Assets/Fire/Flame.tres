@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://d33a008n86is0"]
+
+[ext_resource type="Shader" uid="uid://drcbdl7biglvc" path="res://Assets/Fire/Shaders/fire.tres" id="1_uyrc2"]
+[ext_resource type="Texture2D" uid="uid://pfxovw7hug0c" path="res://Assets/Fire/Voronoi01.png" id="2_77cuv"]
+[ext_resource type="Texture2D" uid="uid://dufno44pab1q6" path="res://Assets/Fire/Flame01.png" id="3_cjr77"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_uyrc2")
+shader_parameter/Texture2DParameter = ExtResource("3_cjr77")
+shader_parameter/Disolve_Tiling = Vector2(0.25, 0.2)
+shader_parameter/Disolve_Speed = Vector2(0, 0.25)
+shader_parameter/DisolveTexture = ExtResource("2_77cuv")
+shader_parameter/DisolveAmount = 0.315
