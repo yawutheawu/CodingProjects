@@ -11,17 +11,6 @@ points = PackedVector3Array(-0.00286783, -0.0146046, 0.248356, 0.0593958, 0.0593
 
 [node name="Lantern" type="Node3D"]
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00282168, 0.113653, 1.7345e-05)
-light_size = 1.0
-shadow_enabled = true
-shadow_bias = 0.0
-shadow_transmittance_bias = -0.1
-shadow_opacity = 0.95
-shadow_blur = 10.0
-spot_range = 0.127534
-spot_angle = 9.13807
-
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0024778, 0.0168886, 0.000363603)
 light_color = Color(0.346554, 0.276749, 0.0493911, 1)
@@ -84,8 +73,9 @@ shape = SubResource("ConvexPolygonShape3D_rh7lw")
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0563256, 0)
 light_color = Color(0.711929, 0.586043, 0.244463, 1)
+light_energy = 1.5
 light_indirect_energy = 2.5
-light_size = 1.0
+light_size = 0.01
 light_specular = 1.0
 shadow_enabled = true
 distance_fade_enabled = true
