@@ -1,21 +1,39 @@
-[gd_scene load_steps=10 format=3 uid="uid://caqpwtsqj6w0t"]
+[gd_scene load_steps=7 format=3 uid="uid://caqpwtsqj6w0t"]
 
 [ext_resource type="ArrayMesh" uid="uid://d137n1ast0y8e" path="res://Assets/Lantern/Lantern_Body.obj" id="1_q5ajm"]
 [ext_resource type="Material" uid="uid://dj03ap554jj5i" path="res://Assets/Lantern/Textures/FlameHolder.tres" id="2_vttwc"]
 [ext_resource type="Material" uid="uid://d3d3x0ujbf6gj" path="res://Assets/Lantern/Textures/Iron.tres" id="3_s6onl"]
 [ext_resource type="Material" uid="uid://ccx3nnltjnuby" path="res://Assets/Lantern/Textures/Wood.tres" id="4_bfd3w"]
 [ext_resource type="Material" uid="uid://dtx8dj6on0gdf" path="res://Assets/Lantern/Textures/LaqueredWood.tres" id="5_rh7lw"]
-[ext_resource type="Shader" uid="uid://drcbdl7biglvc" path="res://Assets/Fire/Shaders/fire.tres" id="6_s6onl"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bfd3w"]
-render_priority = 0
-shader = ExtResource("6_s6onl")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vttwc"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_s6onl"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rh7lw"]
+points = PackedVector3Array(-0.00286783, -0.0146046, 0.248356, 0.0593958, 0.0593958, 0.130483, 0.0577834, -0.0596279, 0.130288, -0.0635, 0.0616556, 0.00183704, -0.0635, -0.0635, 0.00183704, 0.0626028, 0.0626028, 1.38778e-17, 0.0616556, -0.0635, 0.00183704, -0.0596255, 0.0577811, 0.130288, -0.0596255, -0.0596255, 0.130288, -0.00286783, 0.0479579, 0.228779, -0.00286783, -0.0576226, 0.209226, 0.00884368, 0.0166766, 0.244435, -0.00286783, 0.0596946, 0.19749, -0.0067843, 0.0127602, 0.248356, 0.00884368, -0.0341617, 0.236619, -0.0067843, -0.0380655, 0.236619, 0.00493985, 0.044054, 0.232699, 0.00884368, -0.0146046, 0.244435, 0.00493985, -0.0498023, 0.224883, -0.0067843, -0.0106881, 0.248356, -0.0067843, 0.0323172, 0.240515, 0.00493985, 0.0557782, 0.213122, -0.0067843, 0.0518743, 0.220962, -0.0067843, -0.0537188, 0.217042, 0.00493985, -0.0576226, 0.209226, -0.0067843, -0.0263414, 0.244435, 0.00493985, 0.0284008, 0.244435, 0.00493985, -0.0146046, 0.248356, 0.00884368, 0.0323172, 0.236619, 0.00493985, -0.0341617, 0.240515, 0.00102338, 0.0596946, 0.19749, -0.0067843, -0.0458985, 0.228779)
 
 [node name="Lantern" type="Node3D"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0024778, 0.0168886, 0.000363603)
+light_color = Color(0.346554, 0.276749, 0.0493911, 1)
+light_size = 0.01
+light_specular = 3.0
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 1.0
+distance_fade_shadow = 1.0
+distance_fade_length = 1.0
+omni_range = 0.0191988
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(0.999996, -0.00283054, -0.000850182, -0.000883627, -0.0118353, -0.99993, 0.00282028, 0.999926, -0.0118377, 0, 0, 0)
+light_color = Color(0.605075, 0.54674, 0.154015, 1)
+light_size = 0.1
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 0.0
+distance_fade_shadow = 0.5
+distance_fade_length = 0.5
+spot_range = 0.342287
+spot_angle = 40.2015
 
 [node name="LanternBody" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00282168, -0.00448996, 1.7345e-05)
@@ -46,12 +64,21 @@ surface_material_override/22 = ExtResource("5_rh7lw")
 surface_material_override/23 = ExtResource("4_bfd3w")
 surface_material_override/24 = ExtResource("3_s6onl")
 
-[node name="Particle System" type="Node3D" parent="."]
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
 
-[node name="Flame" type="GPUParticles3D" parent="Particle System"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0175402, 0)
-material_override = SubResource("ShaderMaterial_bfd3w")
-amount = 1
-lifetime = 5.0
-process_material = SubResource("ParticleProcessMaterial_vttwc")
-draw_pass_1 = SubResource("QuadMesh_s6onl")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00282168, -0.00448996, 1.7345e-05)
+shape = SubResource("ConvexPolygonShape3D_rh7lw")
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0563256, 0)
+light_color = Color(0.711929, 0.586043, 0.244463, 1)
+light_energy = 1.5
+light_indirect_energy = 2.5
+light_size = 0.01
+light_specular = 1.0
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 1.0
+distance_fade_length = 49.0
+omni_range = 3.67142
