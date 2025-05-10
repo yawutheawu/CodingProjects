@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://m32tm42hpo3f"]
+
+[ext_resource type="Script" uid="uid://bil45vena0txc" path="res://Scripts/Door.gd" id="1_bx7sw"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_38ogf"]
+data = PackedVector3Array(-1, -1.5, 0.125, -1, -1.5, -0.125, -1, 1.5, -0.125, 1, -1.5, -0.125, -1, -1.5, -0.125, -1, -1.5, 0.125, -1, 1.5, -0.125, -1, -1.5, -0.125, 1, -1.5, -0.125, -1, 1.5, -0.125, -1, 1.5, 0.125, -1, -1.5, 0.125, -1, -1.5, 0.125, -1, 1.5, 0.125, 1, 1.5, 0.125, 1, 1.5, 0.125, -1, 1.5, 0.125, -1, 1.5, -0.125, -1, -1.5, 0.125, 1, -1.5, 0.125, 1, -1.5, -0.125, 1, 1.5, 0.125, 1, -1.5, 0.125, -1, -1.5, 0.125, 1, -1.5, -0.125, 1, -1.5, 0.125, 1, 1.5, 0.125, 1, -1.5, -0.125, 1, 1.5, -0.125, -1, 1.5, -0.125, -1, 1.5, -0.125, 1, 1.5, -0.125, 1, 1.5, 0.125, 1, 1.5, 0.125, 1, 1.5, -0.125, 1, -1.5, -0.125)
+
+[node name="Door" type="Area3D"]
+script = ExtResource("1_bx7sw")
+
+[node name="PivotPoin" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="DoorMesh" type="CSGBox3D" parent="PivotPoin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0)
+size = Vector3(2, 3, 0.25)
+
+[node name="DoorCol" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01913, 1.49018, 0.00893295)
+shape = SubResource("ConcavePolygonShape3D_38ogf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="ready" from="." to="." method="_on_ready"]

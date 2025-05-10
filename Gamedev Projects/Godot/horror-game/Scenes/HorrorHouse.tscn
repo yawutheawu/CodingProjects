@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bvhxyn70ou5jr"]
 
 [ext_resource type="PackedScene" uid="uid://y3y1thfwslg5" path="res://Scenes/player.tscn" id="1_xahn0"]
-[ext_resource type="PackedScene" uid="uid://caqpwtsqj6w0t" path="res://Scenes/lantern.tscn" id="2_4uyje"]
+[ext_resource type="PackedScene" uid="uid://m32tm42hpo3f" path="res://Scenes/Door.tscn" id="2_4uyje"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xahn0"]
 data = PackedVector3Array(-10, -0.05, 10, -10, -0.05, -10, -10, 0.05, -10, 10, -0.05, -10, -10, -0.05, -10, -10, -0.05, 10, -10, 0.05, -10, -10, -0.05, -10, 10, -0.05, -10, -10, 0.05, -10, -10, 0.05, 10, -10, -0.05, 10, -10, -0.05, 10, -10, 0.05, 10, 10, 0.05, 10, 10, 0.05, 10, -10, 0.05, 10, -10, 0.05, -10, -10, -0.05, 10, 10, -0.05, 10, 10, -0.05, -10, 10, 0.05, 10, 10, -0.05, 10, -10, -0.05, 10, 10, -0.05, -10, 10, -0.05, 10, 10, 0.05, 10, 10, -0.05, -10, 10, 0.05, -10, -10, 0.05, -10, -10, 0.05, -10, 10, 0.05, -10, 10, 0.05, 10, 10, 0.05, 10, 10, 0.05, -10, 10, -0.05, -10)
@@ -64,8 +64,23 @@ size = Vector3(2.56287, 0.1, 10.2588)
 transform = Transform3D(1, 0, 0, 0, 0.974925, 0.222536, 0, -0.222536, 0.974925, 1.50861, -0.925873, 1.35009)
 shape = SubResource("ConcavePolygonShape3D_4uyje")
 
+[node name="South" type="CSGBox3D" parent="Greyboxing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.476879, 0.0132747, -1.44213)
+size = Vector3(1, 0.741699, 0.550903)
+
+[node name="West" type="CSGBox3D" parent="Greyboxing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.30949, 0.28485, -2.73636)
+
+[node name="North" type="CSGBox3D" parent="Greyboxing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.420441, 0.562956, -4.44891)
+size = Vector3(1, 1.27136, 0.323975)
+
+[node name="East" type="CSGBox3D" parent="Greyboxing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.29954, 0.2843, -2.76652)
+size = Vector3(1, 0.429199, 0.765137)
+
 [node name="Player" parent="." instance=ExtResource("1_xahn0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.182227, 1.04873, -0.00328255)
 
-[node name="Lantern" parent="Player" instance=ExtResource("2_4uyje")]
-transform = Transform3D(9.442e-05, -4.85639e-05, 1, -9.06293e-05, 1, 4.85639e-05, -1, -9.06293e-05, 9.442e-05, 0.320859, 0.612966, -0.488756)
+[node name="Door" parent="." instance=ExtResource("2_4uyje")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.332684, 0.0396549, -2.9851)

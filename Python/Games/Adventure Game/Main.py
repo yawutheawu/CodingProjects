@@ -114,8 +114,101 @@ if output == 0:
         print("A big fish, presumably the bouncer, stops you violently")
         loss()
 elif output == 1:
-    pass
+    prompt = "Filler"
+    question = "Choose a number: "
+    answerList = ["Option 1",
+                  "Option 2"
+                ]
+    output = askQuestion(prompt, question, answerList)
+    if output == 0:
+        prompt = "Filler"
+        question = "Choose a number: "
+        answerList = ["Option 1",
+                    "Option 2"
+                    ]
+        output = askQuestion(prompt, question, answerList)
+        if output == 0:
+            print("Death Message")
+            loss()
+        else:
+            print("Win Message")
+            victory()
+    else:
+        print("Death Message")
+        loss()
 elif output == 2:
-    pass
+    prompt = "Filler"
+    question = "Choose a number: "
+    answerList = ["Option 1",
+                    "Option 2",
+                    "option 3"
+                    ]
+    output = askQuestion(prompt, question, answerList)
+    if output == 0:
+        print("Death Message")
+        loss()
+    elif output == 1:
+        prompt = "Filler"
+        question = "Choose a number: "
+        answerList = ["Option 1",
+                        "Option 2"
+                        ]
+        output = askQuestion(prompt, question, answerList)
+        if output == 0:
+            print("Death Message")
+            loss()
+        else:
+            print("Death Message")
+            loss()
+    else:
+        prompt = "Filler"
+        question = "Choose a number: "
+        answerList = ["Option 1",
+                        "Option 2"
+                        ]
+        output = askQuestion(prompt, question, answerList)
+        if output == 1:
+            print("win message")
+            victory()
 else:
-    pass
+    prompt = "Filler"
+    question = "Choose a number: "
+    answerList = ["Option 1",
+                        "Option 2",
+                        "Option 3"
+                        ]
+    output = askQuestion(prompt, question, answerList)
+    if output == 0:
+        prompt = "Filler"
+        question = "Choose a number: "
+        answerList = ["Option 1",
+                            "Option 2",
+                            "Option 3"
+                            ]
+        output = askQuestion(prompt, question, answerList)
+        if output == 0:
+            print("Loss message")
+            loss()
+        else:
+            print("win message")
+            victory()
+    elif output == 1:
+        prompt = "Filler"
+        question = "Choose a number: "
+        answerList = ["Option 1",
+                            "Option 2",
+                            "Option 3"
+                            ]
+        output = askQuestion(prompt, question, answerList)
+        if output == 0:
+            print("loss message")
+            loss()
+        elif output == 1:
+            print("loss message")
+            loss()
+        else:
+            print("Loss Message")
+            loss()
+    else:
+        print("loss message")
+        loss()

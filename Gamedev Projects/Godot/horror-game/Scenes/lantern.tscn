@@ -6,10 +6,10 @@
 [ext_resource type="Material" uid="uid://ccx3nnltjnuby" path="res://Assets/Lantern/Textures/Wood.tres" id="4_bfd3w"]
 [ext_resource type="Material" uid="uid://dtx8dj6on0gdf" path="res://Assets/Lantern/Textures/LaqueredWood.tres" id="5_rh7lw"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rh7lw"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vttwc"]
 points = PackedVector3Array(-0.00286783, -0.0146046, 0.248356, 0.0593958, 0.0593958, 0.130483, 0.0577834, -0.0596279, 0.130288, -0.0635, 0.0616556, 0.00183704, -0.0635, -0.0635, 0.00183704, 0.0626028, 0.0626028, 1.38778e-17, 0.0616556, -0.0635, 0.00183704, -0.0596255, 0.0577811, 0.130288, -0.0596255, -0.0596255, 0.130288, -0.00286783, 0.0479579, 0.228779, -0.00286783, -0.0576226, 0.209226, 0.00884368, 0.0166766, 0.244435, -0.00286783, 0.0596946, 0.19749, -0.0067843, 0.0127602, 0.248356, 0.00884368, -0.0341617, 0.236619, -0.0067843, -0.0380655, 0.236619, 0.00493985, 0.044054, 0.232699, 0.00884368, -0.0146046, 0.244435, 0.00493985, -0.0498023, 0.224883, -0.0067843, -0.0106881, 0.248356, -0.0067843, 0.0323172, 0.240515, 0.00493985, 0.0557782, 0.213122, -0.0067843, 0.0518743, 0.220962, -0.0067843, -0.0537188, 0.217042, 0.00493985, -0.0576226, 0.209226, -0.0067843, -0.0263414, 0.244435, 0.00493985, 0.0284008, 0.244435, 0.00493985, -0.0146046, 0.248356, 0.00884368, 0.0323172, 0.236619, 0.00493985, -0.0341617, 0.240515, 0.00102338, 0.0596946, 0.19749, -0.0067843, -0.0458985, 0.228779)
 
-[node name="Lantern" type="Node3D"]
+[node name="RigidBody3D" type="RigidBody3D"]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0024778, 0.0168886, 0.000363603)
@@ -64,12 +64,6 @@ surface_material_override/22 = ExtResource("5_rh7lw")
 surface_material_override/23 = ExtResource("4_bfd3w")
 surface_material_override/24 = ExtResource("3_s6onl")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00282168, -0.00448996, 1.7345e-05)
-shape = SubResource("ConvexPolygonShape3D_rh7lw")
-
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0563256, 0)
 light_color = Color(0.711929, 0.586043, 0.244463, 1)
@@ -77,8 +71,11 @@ light_energy = 1.5
 light_indirect_energy = 2.5
 light_size = 0.01
 light_specular = 1.0
-shadow_enabled = true
 distance_fade_enabled = true
 distance_fade_begin = 1.0
 distance_fade_length = 49.0
 omni_range = 3.67142
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00164145, -0.00448998, 0.000662088)
+shape = SubResource("ConvexPolygonShape3D_vttwc")

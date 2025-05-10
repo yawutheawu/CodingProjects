@@ -66,7 +66,6 @@ func _mouse_movement(event: InputEvent) -> void:
 		rotation_degrees.y -= rotation_delta.x  # Horizontal rotation
 		rotation_degrees.x -= rotation_delta.y  # Vertical rotation
 		rotation_degrees.x = clamp(rotation_degrees.x, -90, 90)  # Limit vertical rotation to avoid flipping
-		print(rotation_delta)
 
 # Function to process input events
 func _input(event: InputEvent) -> void:
