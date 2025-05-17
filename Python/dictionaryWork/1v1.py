@@ -1,4 +1,5 @@
 import random
+import gameFuncs as g
 
 '''
 Weapons:
@@ -100,6 +101,8 @@ while intFlag:
     inputHealth = input("How many health points will your character have? ")
     try:
         inputHealth = int(inputHealth)
+        if inputHealth < 1:
+            inputHealth = 1
         intFlag = False
     except:
         print("Please enter whole numbers only")
@@ -110,6 +113,8 @@ while intFlag:
     inputSTR = input("How many strength points will your character have? ")
     try:
         inputSTR = int(inputSTR)
+        if inputSTR < 1:
+            inputSTR = 1
         intFlag = False
     except:
         print("Please enter whole numbers only")
@@ -162,6 +167,4 @@ Enemy = {
     }
 }
 
-print(Player)
-print()
-print(Enemy)
+g.printDuel(Player,Enemy)

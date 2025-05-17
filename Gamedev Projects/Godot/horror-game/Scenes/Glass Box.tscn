@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://d20kwir4vje4b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_asjg5"]
+transparency = 1
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(1, 1, 1, 0.235294)
+metallic = 0.81
+metallic_specular = 0.0
+roughness = 0.2
+
+[node name="CSGBox3D" type="CSGBox3D"]
+transform = Transform3D(0.190208, -0.000431058, -0.000208609, 8.11175e-05, 1.01121, 0.000944423, 3.9165e-05, -0.000944511, 1.01121, 0, 0, 0)
+material = SubResource("StandardMaterial3D_asjg5")

@@ -59,3 +59,4 @@ mouse_middle={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/screen_space_reflection/roughness_quality=3
