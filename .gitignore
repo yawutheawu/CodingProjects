@@ -23,6 +23,10 @@ vscode/*
 .idea/
 /.DS_Store
 .DS_Store
+.env
+.cache
+*.env
+__pycache__
 # Default ignored files
 /shelf/
 /workspace.xml
