@@ -92,7 +92,6 @@ Player = {
     "HEALTH" : 15,
     "STR" : 5,
     "INV" : {
-        "Bread" : {"Quantity":5}
     }
 }
 
@@ -144,7 +143,7 @@ while intFlag:
     try:
         inputConsume = int(inputConsume)
         if inputConsume > 0 and inputConsume <= len(ConsumeStats.keys()):
-            inputConsume = inputConsume-1
+            inputConsume -= 1
             intFlag = False
         else:
             raise Exception("Put in the Right Numba")
@@ -167,4 +166,26 @@ Enemy = {
     }
 }
 
+while Player["HEALTH"] > 0 and Enemy["HEALTH"]>0:
+    g.printDuel(Player,Enemy)
+    turnUsed = False
+    while not turnUsed:
+        PlayerAction = g.actionSelect()
+        if PlayerAction == 1:
+            charWeapon = ""
+            for i in Player["INV"].keys():
+                if i in WeaponStats.keys():
+                    charWeapon = str(i)
+            if Player["INV"][charWeapon]["UsedTimes"] < WeaponStats[charWeapon]["DUR"]:
+                Enemy["HEALTH"] -= WeaponStats[charWeapon]["DMG"] * Player["STR"]
+                Player["INV"][charWeapon]["UsedTimes"] += 1
+                if Player["INV"][charWeapon]["UsedTimes"] >= WeaponStats[charWeapon]["DUR"]:
+                    del Player["INV"][charWeapon]
+                    Player["INV"]["Fists"] = {"Quantity" : 1, "UsedTimes" : 0}
+            turnUsed = True
+        else:
+            charConsume = []
+            for i in Player["INV"].keys():
+                if i in ConsumeStats.keys():
+                    charConsume.append(str(i))
 g.printDuel(Player,Enemy)

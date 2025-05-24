@@ -137,3 +137,28 @@ def printDuel(charDict : dict, enemyDict:dict) -> None:
     print("Consumables:                                    Consumables:")
     for i in consume:
         print(f"\t{i[0][0]} | {i[0][1]}                               \t{i[1][0]} | {i[1][1]}")
+
+def actionSelect() -> int:
+    print("Pick an option: ")
+    print(" ⌜‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾⌝⌜‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾⌝")
+    print(" |                     ||                      |")
+    print(" |       Attack        ||       Consume        |")
+    print(" |                     ||                      |")
+    print(" ⌞_____________________⌟⌞_____________________⌟")
+    correct = True
+    while correct:
+        userIn = input("type in number: ")
+        try:
+            userIn = int(userIn)
+            if userIn == 1:
+                correct = False
+                return 1
+            if userIn ==2:
+                correct = False
+                return 2
+            else:
+                correct = True
+                print("enter 1 or 2")
+        except:
+            print("Enter 1 or 2")
+    return userIn
