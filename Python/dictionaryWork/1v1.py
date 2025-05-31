@@ -1,85 +1,11 @@
 import random
+import time
+import constants
 import gameFuncs as g
 
-'''
-Weapons:
-    Fists
-        DMG: 1
-        DUR: 99999999999999999999999999999999999999999999999999999999999999999999999999999
-    Rusty Sword
-        DMG: 5
-        DUR: 3
-        
-    Gold Sword
-        DMG: 10
-        DUR: 5
-    
-    Excalibur
-        DMG: 100
-        DUR: 1
-    
-    Mace
-        DMG: 7
-        DUR: 7
-    
-    Crossbow
-        DMG: 8
-        DUR: 5
-        
-Consumables
-    Health Potion
-        HEAL: 5
-        STR: 0
-    
-    Bread
-        HEAL: 2
-        STR: 0
-        
-    Potassium
-        HEAL: 0
-        STR: 2
-'''
-WeaponStats = {
-    "Fists" : {
-        "DMG" : 1,
-        "DUR" : 999999999999999999999999999999999999999999999999999999999999999999
-    },
-    "Rusty Sword" : {
-        "DMG" : 5,
-        "DUR" : 3
-    },
-    "Gold Sword" : {
-        "DMG" : 10,
-        "DUR" : 5
-    },
-    "Excalibur" : {
-        "DMG" : 100,
-        "DUR" : 1
-    },
-    "Mace" : {
-        "DMG" : 7,
-        "DUR" : 7
-    },
-    "Crossbow" : {
-        "DMG" : 8,
-        "DUR" : 5
-    }
-}
+WeaponStats = constants.WeaponStats
 
-ConsumeStats = {
-    "Health Potion" : {
-        "HEAL" : 5,
-        "STR" : 0
-    },
-    "Bread" : {
-        "HEAL" : 2,
-        "STR" : 0
-    },
-    "Potassium" : {
-        "HEAL" : 0,
-        "STR" : 2
-    }
-}
+ConsumeStats = constants.ConsumeStats
 
 '''
 Entity
@@ -165,7 +91,6 @@ Enemy = {
         random.choice(list(ConsumeStats.keys())) : {"Quantity":max(round(random.gauss(5,3)),1)}
     }
 }
-
 while Player["HEALTH"] > 0 and Enemy["HEALTH"]>0:
     g.printDuel(Player,Enemy)
     turnUsed = False
@@ -185,7 +110,46 @@ while Player["HEALTH"] > 0 and Enemy["HEALTH"]>0:
             turnUsed = True
         else:
             charConsume = []
-            for i in Player["INV"].keys():
-                if i in ConsumeStats.keys():
-                    charConsume.append(str(i))
+            for i in Player["INV"].items():
+                if i[0] in list(ConsumeStats.keys()):
+                    charConsume.append(i)
+            ConsumeInputFlag = True
+            while ConsumeInputFlag:
+                print("What would you like to consume?")
+                for i in range(len(charConsume)):
+                    print(f"{i+1}. {charConsume[i][0]} | Left: {charConsume[i][1]['Quantity']}")
+                print(f"{len(charConsume)+1}. Return")
+                selection = input("Pick a number from the list: ")
+                try:
+                    selection = int(selection)-1
+                    if selection == len(charConsume):
+                        print("Returning")
+                        ConsumeInputFlag = False
+                    elif selection >= 0 and selection <= len(charConsume):
+                        itemSelection = charConsume[selection][0]
+                        Player["INV"][itemSelection]["Quantity"] -= 1
+                        Player["HEALTH"] += ConsumeStats[itemSelection]["HEAL"]
+                        Player["STR"] += ConsumeStats[itemSelection]["STR"]
+                        if Player["INV"][itemSelection]["Quantity"] <= 0:
+                            del Player["INV"][itemSelection]
+                        turnUsed = True
+                        ConsumeInputFlag = False
+                    else:
+                        print("Bad Input")
+                        ConsumeInputFlag = True
+                except Exception as e:
+                    print(e)
+                    print("Try Again")
+                    ConsumeInputFlag = True
+    while turnUsed:
+        print("Enemy Turn")
+        time.sleep(1)
+        turnUsed = False
+        '''
+        Agression Meter, chance of attack vs consumeables depending on consumables
+            potentially based off of STR
+        If low health, focus on healing
+        if high health and not agressive, focus on using potassium
+        avoid using healing items too early
+        '''
 g.printDuel(Player,Enemy)
