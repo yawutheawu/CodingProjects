@@ -78,14 +78,14 @@ while intFlag:
 Player["INV"][list(ConsumeStats.keys())[inputConsume]] = {"Quantity": max(round(random.gauss(5,3)),1)}
 
 Enemy = {
-    "HEALTH" : random.randrange(
+    "HEALTH" : max(random.randrange(
         round(Player["HEALTH"]-(Player["HEALTH"]*0.5)),
         round(Player["HEALTH"]+(Player["HEALTH"]*0.3))
-        ),
-    "STR" : random.randrange(
+        ),1),
+    "STR" : max(random.randrange(
         round(Player["STR"]-(Player["STR"]*0.5)),
         round(Player["STR"]+(Player["STR"]*0.3))
-        ),
+        ),0.5),
     "INV" : {
         random.choice(list(WeaponStats.keys())) : {"Quantity": 1, "UsedTimes":0},
         random.choice(list(ConsumeStats.keys())) : {"Quantity":max(round(random.gauss(5,3)),1)}
@@ -141,15 +141,70 @@ while Player["HEALTH"] > 0 and Enemy["HEALTH"]>0:
                     print(e)
                     print("Try Again")
                     ConsumeInputFlag = True
-    while turnUsed:
-        print("Enemy Turn")
-        time.sleep(1)
-        turnUsed = False
-        '''
-        Agression Meter, chance of attack vs consumeables depending on consumables
-            potentially based off of STR
-        If low health, focus on healing
-        if high health and not agressive, focus on using potassium
-        avoid using healing items too early
-        '''
+    if Player["HEALTH"] > 0 and Enemy["HEALTH"]>0:
+        while turnUsed:
+            print("Enemy Turn")
+            Aggro = (Enemy["HEALTH"] - Enemy["STR"]) / (Enemy["HEALTH"] + Enemy["STR"])
+            HealthPercent = Enemy["HEALTH"]/Player["HEALTH"] 
+            if "Potassium" in Enemy['INV'].keys() and HealthPercent > 0.99 and turnUsed:
+                Enemy['INV']["Potassium"] -= 1
+                if Enemy['INV']["Potassium"] <= 0:
+                    del Enemy['INV']["Potassium"]
+                Enemy["STR"] += ConsumeStats['Potassium']["STR"]
+                Enemy["HEALTH"] += ConsumeStats['Potassium']["HEAL"]
+                print("\n\tEnemy Uses Potassium to Boost their STR!\n")
+                time.sleep(1)
+                turnUsed = False
+            if HealthPercent < 0.5 and turnUsed:
+                consumes = []
+                for i in Enemy["INV"].keys():
+                    if i in ConsumeStats.keys():
+                        consumes.append(i)
+                if len(consumes) > 0:
+                    selection = random.choice(consumes)
+                    Enemy["HEALTH"] += ConsumeStats[selection]["HEAL"]
+                    Enemy["STR"] += ConsumeStats[selection]["STR"]
+                    Enemy["INV"][selection]["Quantity"] -= 1
+                    if Enemy['INV'][selection]["Quantity"] <= 0:
+                        del Enemy['INV'][selection]
+                    print(f"\n\tEnemy Uses {selection} to Increase their Health by {ConsumeStats[selection]['HEAL']} and Boost their STR by {ConsumeStats[selection]['STR']}!\n")
+                    time.sleep(1)
+                    turnUsed = False
+                else:
+                    pass
+            if turnUsed:
+                attacks = []
+                for i in Enemy["INV"].keys():
+                    if i in WeaponStats.keys():
+                        attacks.append(i)
+                if len(attacks) > 0:
+                    selection = random.choice(attacks)
+                    Player["HEALTH"] -= WeaponStats[selection]["DMG"] * Enemy["STR"]
+                    Enemy["INV"][selection]["UsedTimes"] += 1
+                    if Enemy['INV'][selection]["UsedTimes"] >= WeaponStats[selection]["DUR"]:
+                        del Enemy['INV'][selection]
+                        Enemy['INV']["Fists"] = {'Quantity': 1, 'UsedTimes': 0}
+                    print(f"\n\tEnemy Uses {selection} to Attack dealing {WeaponStats[selection]['DMG'] * Enemy['STR']} total damage!\n")
+                    time.sleep(1)
+                    turnUsed = False
+                else:
+                    pass
+            '''
+            Agression Meter, chance of attack vs consumeables depending on consumables
+                potentially based off of STR
+            If low health, focus on healing
+            if high health and not agressive, focus on using potassium
+            avoid using healing items too early
+            '''
 g.printDuel(Player,Enemy)
+print("-------------------------------------------------------------------------------------")
+if Player["HEALTH"] >= 0 and Enemy["HEALTH"] <= 0:
+    print("The Player Triumphs")
+elif Player["HEALTH"] <= 0 and Enemy["HEALTH"] >= 0:
+    print("The Player's tale is lost to time")
+elif Player["HEALTH"] >= 0 and Enemy["HEALTH"] >= 0:
+    print("All walk away wounded but with their lives")
+elif Player["HEALTH"] <= 0 and Enemy["HEALTH"] <= 0:
+    print("A pyrrhic victory for both sides")
+else:
+    print("Divine intervention defies logical standards")

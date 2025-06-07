@@ -95,7 +95,7 @@ def printDuel(charDict : dict, enemyDict:dict) -> None:
     else:
         for i in enemyConsume:
             if i != None:
-                consume.append([["", ""],i])
+                consume.append([["\t", ""],i])
         for k,i in enumerate(charConsume):
             try:
                 consume[k][0] = i
