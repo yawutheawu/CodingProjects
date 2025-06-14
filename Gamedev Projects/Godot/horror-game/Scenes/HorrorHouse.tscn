@@ -1,9 +1,37 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvhxyn70ou5jr"]
+[gd_scene load_steps=10 format=3 uid="uid://bvhxyn70ou5jr"]
 
 [ext_resource type="PackedScene" uid="uid://y3y1thfwslg5" path="res://Scenes/player.tscn" id="1_xahn0"]
 [ext_resource type="PackedScene" uid="uid://m32tm42hpo3f" path="res://Scenes/Door.tscn" id="2_4uyje"]
 [ext_resource type="PackedScene" uid="uid://d20kwir4vje4b" path="res://Scenes/Glass Box.tscn" id="3_myapp"]
 [ext_resource type="PackedScene" uid="uid://qov4tlcwthqv" path="res://Scenes/DeathScreenControl.tscn" id="4_jolha"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jolha"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_21fr8"]
+sky_material = SubResource("ProceduralSkyMaterial_jolha")
+
+[sub_resource type="Environment" id="Environment_gqh5d"]
+background_mode = 1
+sky = SubResource("Sky_21fr8")
+ambient_light_source = 3
+tonemap_mode = 2
+glow_enabled = true
+glow_intensity = 1.0
+glow_hdr_threshold = 0.19
+glow_hdr_scale = 1.4
+glow_hdr_luminance_cap = 6.55
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 16.0
+fog_density = 1.0
+fog_height = 1.5
+fog_height_density = 2.1596
+fog_depth_curve = 0.04
+fog_depth_begin = 2.5
+fog_depth_end = 12.0
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xahn0"]
 data = PackedVector3Array(-10, -0.05, 10, -10, -0.05, -10, -10, 0.05, -10, 10, -0.05, -10, -10, -0.05, -10, -10, -0.05, 10, -10, 0.05, -10, -10, -0.05, -10, 10, -0.05, -10, -10, 0.05, -10, -10, 0.05, 10, -10, -0.05, 10, -10, -0.05, 10, -10, 0.05, 10, 10, 0.05, 10, 10, 0.05, 10, -10, 0.05, 10, -10, 0.05, -10, -10, -0.05, 10, 10, -0.05, 10, 10, -0.05, -10, 10, 0.05, 10, 10, -0.05, 10, -10, -0.05, 10, 10, -0.05, -10, 10, -0.05, 10, 10, 0.05, 10, 10, -0.05, -10, 10, 0.05, -10, -10, 0.05, -10, -10, 0.05, -10, 10, 0.05, -10, 10, 0.05, 10, 10, 0.05, 10, 10, 0.05, -10, 10, -0.05, -10)
@@ -12,6 +40,9 @@ data = PackedVector3Array(-10, -0.05, 10, -10, -0.05, -10, -10, 0.05, -10, 10, -
 data = PackedVector3Array(-1.28143, -0.05, 5.12938, -1.28143, -0.05, -5.12938, -1.28143, 0.05, -5.12938, 1.28143, -0.05, -5.12938, -1.28143, -0.05, -5.12938, -1.28143, -0.05, 5.12938, -1.28143, 0.05, -5.12938, -1.28143, -0.05, -5.12938, 1.28143, -0.05, -5.12938, -1.28143, 0.05, -5.12938, -1.28143, 0.05, 5.12938, -1.28143, -0.05, 5.12938, -1.28143, -0.05, 5.12938, -1.28143, 0.05, 5.12938, 1.28143, 0.05, 5.12938, 1.28143, 0.05, 5.12938, -1.28143, 0.05, 5.12938, -1.28143, 0.05, -5.12938, -1.28143, -0.05, 5.12938, 1.28143, -0.05, 5.12938, 1.28143, -0.05, -5.12938, 1.28143, 0.05, 5.12938, 1.28143, -0.05, 5.12938, -1.28143, -0.05, 5.12938, 1.28143, -0.05, -5.12938, 1.28143, -0.05, 5.12938, 1.28143, 0.05, 5.12938, 1.28143, -0.05, -5.12938, 1.28143, 0.05, -5.12938, -1.28143, 0.05, -5.12938, -1.28143, 0.05, -5.12938, 1.28143, 0.05, -5.12938, 1.28143, 0.05, 5.12938, 1.28143, 0.05, 5.12938, 1.28143, 0.05, -5.12938, 1.28143, -0.05, -5.12938)
 
 [node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gqh5d")
 
 [node name="Greyboxing" type="Node" parent="."]
 

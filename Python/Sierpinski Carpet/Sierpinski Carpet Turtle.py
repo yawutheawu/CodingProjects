@@ -5,9 +5,9 @@ import math
 t = Turtle()
 t.speed(0)
 t.screen.title('sierpinski carpet')
-xSize = 300
-ySize = 300
-resolution = 10
+xSize = 150
+ySize = 150
+resolution = 5
 t.screen.screensize(xSize*2,ySize*2)
 def square(sideLength):
     t.up()
