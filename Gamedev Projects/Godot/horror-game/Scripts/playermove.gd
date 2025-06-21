@@ -2,7 +2,6 @@ extends CharacterBody3D
 # Character movement constants
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
-
 # Track mouse capture state
 var is_mouse_captured = false  # Set this to false by default
 var lastMouse = 0
