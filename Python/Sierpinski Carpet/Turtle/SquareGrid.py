@@ -5,7 +5,7 @@ import time
 import math
 
 t = Turtle()
-t.speed(25)
+t.speed(0)
 t.screen.title('Turtle Testing')
 t.screen.colormode(255)
 xSize = 300
@@ -36,6 +36,23 @@ def square(centerX:int = 0,
         t.forward(size)
         t.left(90)
     t.end_fill()
+    
+def triangle(tringlePos:tuple = (0,0),tringleBottomLen:int = 10, width:int = 5,color:tuple = (150,150,150)):
+       t.penup()
+       t.width(width)
+       t.color(color)
+       t.setpos(tringlePos[0],tringlePos[1])
+       t.seth(0)
+       t.pendown()
+       t.begin_fill()
+       t.shape("turtle")
+       t.forward(tringleBottomLen/2)
+       t.left(180)
+       t.forward(tringleBottomLen)
+       t.setpos(tringlePos[0],tringleBottomLen)
+       t.setpos(tringlePos[0] + tringleBottomLen/2,tringlePos[1])
+       t.end_fill()  
+'''
 square(r.randint(-xSize,xSize),
        r.randint(-ySize,ySize),
        200,
@@ -54,23 +71,26 @@ square(r.randint(-xSize,xSize),
        (r.randint(0,255),r.randint(0,255),r.randint(0,255)),
        (r.randint(0,255),r.randint(0,255),r.randint(0,255)),
        r.randint(1,10))
-for i in range(25):
-    tringlePos = (r.randint(-xSize,xSize),r.randint(-xSize,xSize))
-    tringleBottomLen = r.randint(0,100)
-    t.penup()
-    t.width(r.randint(1,10))
-    t.color((r.randint(0,255),r.randint(0,255),r.randint(0,255)),(r.randint(0,255),r.randint(0,255),r.randint(0,255)))
-    t.setpos(tringlePos[0],tringlePos[1])
-    t.seth(0)
-    t.pendown()
-    t.begin_fill()
-    t.shape("turtle")
-    t.forward(tringleBottomLen/2)
-    t.left(180)
-    t.forward(tringleBottomLen)
-    t.setpos(tringlePos[0],tringleBottomLen)
-    t.setpos(tringlePos[0] + tringleBottomLen/2,tringlePos[1])
-    t.end_fill()
+''' 
 
+cols = 10
+square(0,0,xSize*ySize,(0,0,0),(0,0,0),1)
 
+SideInc = (t.screen.window_width())/cols
+lineWidth = 10
+
+#Top left
+#square(-t.screen.window_width()/2,t.screen.window_height()/2)
+#Bottom Right
+#square(t.screen.window_width()/2,-t.screen.window_height()/2)
+#Top Right
+#square(t.screen.window_width()/2,t.screen.window_height()/2)
+#Bottom Left
+#square(-t.screen.window_width()/2,-t.screen.window_height()/2)
+#Center:
+#square(0,0)
+for i in range(0,cols+1):
+       for j in range(0,cols+1):
+              square((-t.screen.window_width()/2) + (SideInc * j),(t.screen.window_height()/2) - (SideInc * i),SideInc-(lineWidth+1),(255,255,255),(255,255,255),1)
+print("done")
 t.screen.mainloop()

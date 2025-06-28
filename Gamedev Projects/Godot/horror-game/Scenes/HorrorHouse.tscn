@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bvhxyn70ou5jr"]
+[gd_scene load_steps=13 format=3 uid="uid://bvhxyn70ou5jr"]
 
 [ext_resource type="PackedScene" uid="uid://y3y1thfwslg5" path="res://Scenes/player.tscn" id="1_xahn0"]
 [ext_resource type="PackedScene" uid="uid://m32tm42hpo3f" path="res://Scenes/Door.tscn" id="2_4uyje"]
 [ext_resource type="PackedScene" uid="uid://d20kwir4vje4b" path="res://Scenes/Glass Box.tscn" id="3_myapp"]
 [ext_resource type="PackedScene" uid="uid://qov4tlcwthqv" path="res://Scenes/DeathScreenControl.tscn" id="4_jolha"]
 [ext_resource type="PackedScene" uid="uid://dx3i8p5cd6twu" path="res://Scenes/enemy.tscn" id="5_21fr8"]
+[ext_resource type="PackedScene" uid="uid://bigo7m2ef0b6r" path="res://Scenes/lowPolyChar.tscn" id="6_gqh5d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jolha"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -110,7 +111,7 @@ shape = SubResource("ConcavePolygonShape3D_4uyje")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.332684, 0.0396549, -2.9851)
 
 [node name="Enemy" parent="NavigationRegion3D" instance=ExtResource("5_21fr8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50954, -5.88739)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.585737, 0.501855, -5.70161)
 
 [node name="Player" parent="." instance=ExtResource("1_xahn0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.771602, 1.06156, 0.225678)
@@ -120,3 +121,6 @@ transform = Transform3D(-8.31424e-09, 7.71459e-11, 1.01121, 0.000331975, 1.01121
 
 [node name="Death Screen" parent="." instance=ExtResource("4_jolha")]
 visible = false
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("6_gqh5d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73322, 0.0396547, -5.16129)
