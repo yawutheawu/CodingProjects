@@ -1,3 +1,4 @@
+
 extends CharacterBody3D
 # Character movement constants
 const SPEED = 5.0
