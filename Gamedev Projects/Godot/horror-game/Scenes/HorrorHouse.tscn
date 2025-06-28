@@ -112,6 +112,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.332684, 0.0396549, -2.9851
 
 [node name="Enemy" parent="NavigationRegion3D" instance=ExtResource("5_21fr8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.585737, 0.501855, -5.70161)
+script = null
 
 [node name="Player" parent="." instance=ExtResource("1_xahn0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.771602, 1.06156, 0.225678)
