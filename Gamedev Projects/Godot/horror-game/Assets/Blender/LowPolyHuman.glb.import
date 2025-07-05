@@ -3,18 +3,18 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b61krsfu0ca06"
-path="res://.godot/imported/IKtest.glb-7e78334f8035eac801ad1278caf90118.scn"
+uid="uid://dyqxao74rv8xm"
+path="res://.godot/imported/LowPolyHuman.glb-e51cfc7e66015fd7fc570d53bb112c63.scn"
 
 [deps]
 
-source_file="res://Assets/Imports/IKtest.glb"
-dest_files=["res://.godot/imported/IKtest.glb-7e78334f8035eac801ad1278caf90118.scn"]
+source_file="res://Assets/Blender/LowPolyHuman.glb"
+dest_files=["res://.godot/imported/LowPolyHuman.glb-e51cfc7e66015fd7fc570d53bb112c63.scn"]
 
 [params]
 
-nodes/root_type=""
-nodes/root_name=""
+nodes/root_type="CharacterBody3D"
+nodes/root_name="Jerry"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false

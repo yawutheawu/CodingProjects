@@ -9,6 +9,10 @@ var lastMouse = 0
 # Sensitivity for mouse movement
 var sensitivity = 0.1
 
+'''
+https://www.youtube.com/@Bonkahe/playlists
+'''
+
 # Physics process (Character movement)
 func _physics_process(delta: float) -> void:
 	# Add gravity if not on the floor

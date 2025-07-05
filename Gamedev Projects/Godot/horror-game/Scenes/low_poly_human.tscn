@@ -1,5 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://besg52nqnv7r8"]
+[gd_scene load_steps=3 format=3 uid="uid://besg52nqnv7r8"]
 
-[ext_resource type="PackedScene" uid="uid://m4edke6gu5xj" path="res://Assets/Imports/LowPolyHuman.blend" id="1_iak65"]
+[ext_resource type="PackedScene" uid="uid://dyqxao74rv8xm" path="res://Assets/Blender/LowPolyHuman.glb" id="1_iak65"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lt1rl"]
 
 [node name="LowPolyHuman" instance=ExtResource("1_iak65")]
+
+[node name="Skeleton3D" parent="Fella Armature" index="0"]
+bones/0/position = Vector3(0, 1.41467, 0)
+bones/5/rotation = Quaternion(0.00908747, 0.00218115, -0.999013, 0.0434202)
+bones/6/rotation = Quaternion(-1.7463e-10, -5.23873e-10, -4.46962e-08, 1)
+bones/7/rotation = Quaternion(-1.74623e-10, -5.23869e-10, 7.2724e-12, 1)
+bones/10/rotation = Quaternion(0.00891868, 0.00373319, 0.999585, 0.0271336)
+bones/15/rotation = Quaternion(-0.706729, 0.0231011, 0.706729, -0.0231011)
+bones/16/rotation = Quaternion(0.0143028, -0.0259661, -0.0404292, 0.998743)
+bones/17/rotation = Quaternion(-6.17015e-09, -3.17777e-08, 0.289417, 0.957203)
+bones/18/rotation = Quaternion(0.00702646, -0.00535206, 0.581982, 0.813154)
+bones/21/rotation = Quaternion(0.702854, 0.0774326, 0.702854, 0.0774327)
+bones/22/rotation = Quaternion(-0.0319484, 0.0865703, 0.103367, 0.990354)
+bones/23/rotation = Quaternion(-1.75745e-08, 2.44659e-08, -0.40033, 0.916371)
+bones/25/rotation = Quaternion(1.14034e-08, 6.11112e-08, -0.472196, 0.881494)
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "Idle"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_lt1rl")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="3"]
+avoidance_enabled = true
+height = 2.0
+radius = 5.0
+max_neighbors = 1
+time_horizon_agents = 0.5
+debug_enabled = true

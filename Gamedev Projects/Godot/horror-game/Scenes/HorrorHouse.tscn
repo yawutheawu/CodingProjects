@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bvhxyn70ou5jr"]
+[gd_scene load_steps=12 format=3 uid="uid://bvhxyn70ou5jr"]
 
 [ext_resource type="PackedScene" uid="uid://y3y1thfwslg5" path="res://Scenes/player.tscn" id="1_xahn0"]
 [ext_resource type="PackedScene" uid="uid://m32tm42hpo3f" path="res://Scenes/Door.tscn" id="2_4uyje"]
 [ext_resource type="PackedScene" uid="uid://qov4tlcwthqv" path="res://Scenes/DeathScreenControl.tscn" id="4_jolha"]
 [ext_resource type="PackedScene" uid="uid://dx3i8p5cd6twu" path="res://Scenes/enemy.tscn" id="5_21fr8"]
+[ext_resource type="PackedScene" uid="uid://besg52nqnv7r8" path="res://Scenes/low_poly_human.tscn" id="5_gqh5d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jolha"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -116,3 +117,6 @@ visible = false
 
 [node name="Enemy" parent="." instance=ExtResource("5_21fr8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62442, 0.61409, -6.75042)
+
+[node name="LowPolyHuman" parent="." instance=ExtResource("5_gqh5d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.37344, 0.0526607, -4.02738)
