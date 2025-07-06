@@ -11,10 +11,11 @@ t.screen.colormode(255)
 xSize = 300
 ySize = 300
 resolution = 1
+TriSize = 1000
 t.screen.screensize(xSize*2,ySize*2)
 
 def draw_sierpinski(length):
-    if length<5:
+    if length<resolution:
         for i in range(0,3):
             t.fd(length)
             t.left(120)
@@ -32,7 +33,6 @@ def draw_sierpinski(length):
         t.right(60)
 
 
-TriSize = 500
 t.up()
 t.goto(-TriSize/2, -(((3**(1/2)) / 2) * TriSize)/2)
 t.down()
