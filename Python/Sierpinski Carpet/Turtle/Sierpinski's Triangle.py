@@ -6,12 +6,12 @@ import math
 
 t = Turtle()
 t.speed(0)
-t.screen.title('Triangle Tunnel')
+t.screen.title('Triangle maxxing')
 t.screen.colormode(255)
 xSize = 300
 ySize = 300
-resolution = 1
-TriSize = 1000
+resolution = 30
+TriSize = 500
 t.screen.screensize(xSize*2,ySize*2)
 
 def draw_sierpinski(length):
