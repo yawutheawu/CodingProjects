@@ -3,7 +3,7 @@ from selenium.webdriver import FirefoxOptions
 from selenium.webdriver.common.by import By
 
 opts = FirefoxOptions()
-opts.add_argument("--headless")
+#opts.add_argument("--headless")
 driver = webdriver.Firefox(options=opts)
 driver.get("https://www.youtube.com/")
 
