@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://y3y1thfwslg5"]
+
+[ext_resource type="Script" uid="uid://cpk24nku6tiki" path="res://Scripts/playerMove.gd" id="1_no3j7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvnsp"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_cvnsp"]
+
+[sub_resource type="Environment" id="Environment_v0iea"]
+background_mode = 1
+background_energy_multiplier = 0.0
+ssao_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+fog_mode = 1
+fog_light_color = Color(0.244768, 0.268561, 0.305965, 1)
+fog_density = 1.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.35
+volumetric_fog_albedo = Color(0.230315, 0.230315, 0.230315, 1)
+volumetric_fog_emission_energy = 0.0
+
+[node name="Player" type="CharacterBody3D"]
+floor_max_angle = 1.0472
+floor_snap_length = 0.0
+safe_margin = 0.1
+script = ExtResource("1_no3j7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.240512, 0.1)
+shape = SubResource("CapsuleShape3D_cvnsp")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.240512, 0.1)
+mesh = SubResource("CapsuleMesh_cvnsp")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0.000223496, -0.000587852, -0.000222324, 0.999998, 0.00201609, 0.000588297, -0.00201597, 0.999998, 0.0121975, 0.206016, 0.0189868)
+light_color = Color(1, 0.839216, 0.0745098, 1)
+light_size = 0.4
+distance_fade_enabled = true
+distance_fade_begin = 0.0
+omni_range = 2.5
+
+[node name="Camera Controller" type="Node3D" parent="."]
+transform = Transform3D(0.960469, 0, -0.278388, 0, 1, 0, 0.278388, 0, 0.960469, 0, 0.240512, 0.1)
+
+[node name="Camera3D" type="Camera3D" parent="Camera Controller"]
+transform = Transform3D(0.960469, -0.0970291, 0.260931, 0, 0.937294, 0.348539, -0.278388, -0.334761, 0.900242, 0.643554, 1.48259, 2.22033)
+environment = SubResource("Environment_v0iea")
