@@ -103,7 +103,6 @@ bind/16/pose = Transform3D(0.250051, 0.357014, 0.250051, -0.355324, 6.05046e-08,
 transform = Transform3D(1.99003, 0, 0, 0, 1.99003, 0, 0, 0, 1.99003, 0, 0, 0)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="SpiderRig"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/0/name = "Head"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -227,3 +226,30 @@ bones/16/scale = Vector3(1, 1, 1)
 [node name="Leg Tip Seg_002" type="MeshInstance3D" parent="SpiderRig/Skeleton3D"]
 mesh = SubResource("ArrayMesh_og1a6")
 skin = SubResource("Skin_omf6r")
+
+[node name="Back Right" type="SkeletonIK3D" parent="SpiderRig/Skeleton3D"]
+root_bone = &"BR.Root"
+tip_bone = &"BR.FakeTip"
+use_magnet = true
+magnet = Vector3(0, 10, 0)
+
+[node name="Front Right" type="SkeletonIK3D" parent="SpiderRig/Skeleton3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+root_bone = &"FR.Root"
+tip_bone = &"FR.FakeTip.001"
+use_magnet = true
+magnet = Vector3(0, 10, 0)
+
+[node name="Back Left" type="SkeletonIK3D" parent="SpiderRig/Skeleton3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+root_bone = &"BL.Root"
+tip_bone = &"BL.FakeTip"
+use_magnet = true
+magnet = Vector3(0, 10, 0)
+
+[node name="Front Left" type="SkeletonIK3D" parent="SpiderRig/Skeleton3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+root_bone = &"FL.Root"
+tip_bone = &"FL.RealTip"
+use_magnet = true
+magnet = Vector3(0, 10, 0)

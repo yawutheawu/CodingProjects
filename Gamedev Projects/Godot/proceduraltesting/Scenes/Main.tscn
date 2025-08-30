@@ -5,4 +5,8 @@
 [node name="Node3D" type="Node3D"]
 
 [node name="ProcedSpiderBot" parent="." instance=ExtResource("1_r150o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0474863, 0, 0.125986)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0474863, 1.0084, 0.125986)
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+size = Vector3(50, 1, 501)
