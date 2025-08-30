@@ -9,4 +9,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0474863, 1.0084, 0.125986)
 
 [node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-size = Vector3(50, 1, 501)
+size = Vector3(50, 1, 50)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.931995, 0.362471, 0, -0.362471, 0.931995, -0.191614, 7.51843, 11.7019)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.158362, 0.583752, -0.796339, -0.25405, 0.755273, 0.60417, 0.954139, 0.297987, 0.0286956, -115.125, 43.2438, 109.51)
+light_color = Color(1, 1, 0.866667, 1)
+light_energy = 4.83

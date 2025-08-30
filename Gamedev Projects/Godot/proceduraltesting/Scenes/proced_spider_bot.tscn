@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=4 uid="uid://by5voy63326tk"]
+[gd_scene load_steps=6 format=4 uid="uid://by5voy63326tk"]
+
+[ext_resource type="Script" uid="uid://c2ak35v55xmdw" path="res://Scripts/StartIK.gd" id="1_0pk6q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gxook"]
 
@@ -103,6 +105,7 @@ bind/16/pose = Transform3D(0.250051, 0.357014, 0.250051, -0.355324, 6.05046e-08,
 transform = Transform3D(1.99003, 0, 0, 0, 1.99003, 0, 0, 0, 1.99003, 0, 0, 0)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="SpiderRig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.838431, 0)
 bones/0/name = "Head"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -232,24 +235,41 @@ root_bone = &"BR.Root"
 tip_bone = &"BR.FakeTip"
 use_magnet = true
 magnet = Vector3(0, 10, 0)
+target_node = NodePath("../../Back Right Target")
+script = ExtResource("1_0pk6q")
 
 [node name="Front Right" type="SkeletonIK3D" parent="SpiderRig/Skeleton3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 root_bone = &"FR.Root"
 tip_bone = &"FR.FakeTip.001"
 use_magnet = true
 magnet = Vector3(0, 10, 0)
+target_node = NodePath("../../Front Right Target")
+script = ExtResource("1_0pk6q")
 
 [node name="Back Left" type="SkeletonIK3D" parent="SpiderRig/Skeleton3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 root_bone = &"BL.Root"
 tip_bone = &"BL.FakeTip"
 use_magnet = true
 magnet = Vector3(0, 10, 0)
+target_node = NodePath("../../Back Left Target")
+script = ExtResource("1_0pk6q")
 
 [node name="Front Left" type="SkeletonIK3D" parent="SpiderRig/Skeleton3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 root_bone = &"FL.Root"
 tip_bone = &"FL.RealTip"
 use_magnet = true
 magnet = Vector3(0, 10, 0)
+target_node = NodePath("../../Front Left Target")
+script = ExtResource("1_0pk6q")
+
+[node name="Front Left Target" type="Marker3D" parent="SpiderRig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37885, 0, 1.72942)
+
+[node name="Front Right Target" type="Marker3D" parent="SpiderRig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.22971, 0, 2.01532)
+
+[node name="Back Left Target" type="Marker3D" parent="SpiderRig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3823, 0, -2.06919)
+
+[node name="Back Right Target" type="Marker3D" parent="SpiderRig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19124, 0, -1.3231)
