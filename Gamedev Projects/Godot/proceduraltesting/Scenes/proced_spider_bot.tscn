@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=4 uid="uid://by5voy63326tk"]
+[gd_scene load_steps=7 format=4 uid="uid://by5voy63326tk"]
 
 [ext_resource type="Script" uid="uid://c2ak35v55xmdw" path="res://Scripts/StartIK.gd" id="1_0pk6q"]
+[ext_resource type="Script" uid="uid://ddrh57iy8cdjo" path="res://Scenes/proced_spider_bot.gd" id="1_2hbx0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gxook"]
 
@@ -100,6 +101,7 @@ bind/16/bone = -1
 bind/16/pose = Transform3D(0.250051, 0.357014, 0.250051, -0.355324, 6.05046e-08, 0.355324, 0.252447, -0.353625, 0.252447, -0.0252173, -3.35471, 0.0508321)
 
 [node name="ProcedSpiderBot" type="Node3D"]
+script = ExtResource("1_2hbx0")
 
 [node name="SpiderRig" type="Node3D" parent="."]
 transform = Transform3D(1.99003, 0, 0, 0, 1.99003, 0, 0, 0, 1.99003, 0, 0, 0)
@@ -256,20 +258,50 @@ script = ExtResource("1_0pk6q")
 
 [node name="Front Left" type="SkeletonIK3D" parent="SpiderRig/Skeleton3D"]
 root_bone = &"FL.Root"
-tip_bone = &"FL.RealTip"
+tip_bone = &"FR.FakeTip"
 use_magnet = true
 magnet = Vector3(0, 10, 0)
 target_node = NodePath("../../Front Left Target")
 script = ExtResource("1_0pk6q")
 
 [node name="Front Left Target" type="Marker3D" parent="SpiderRig"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37885, 0, 1.72942)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
+top_level = true
 
 [node name="Front Right Target" type="Marker3D" parent="SpiderRig"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.22971, 0, 2.01532)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
+top_level = true
 
 [node name="Back Left Target" type="Marker3D" parent="SpiderRig"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3823, 0, -2.06919)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
+top_level = true
 
 [node name="Back Right Target" type="Marker3D" parent="SpiderRig"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19124, 0, -1.3231)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
+top_level = true
+
+[node name="Step Targets" type="Node3D" parent="SpiderRig"]
+
+[node name="StepFL" type="Marker3D" parent="SpiderRig/Step Targets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="FL Ray" type="RayCast3D" parent="SpiderRig/Step Targets/StepFL"]
+transform = Transform3D(0.996195, -0.0871557, 0, 0.0868241, 0.992404, 0.0871557, -0.00759612, -0.0868241, 0.996195, 0, 0, 0)
+
+[node name="StepFR" type="Marker3D" parent="SpiderRig/Step Targets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="FR Ray" type="RayCast3D" parent="SpiderRig/Step Targets/StepFR"]
+transform = Transform3D(0.996195, 0.0871557, 0, -0.0868241, 0.992404, 0.0871557, 0.00759612, -0.0868241, 0.996195, 0, 0, 0)
+
+[node name="StepBL" type="Marker3D" parent="SpiderRig/Step Targets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="BL Ray" type="RayCast3D" parent="SpiderRig/Step Targets/StepBL"]
+transform = Transform3D(0.996195, -0.0871557, 0, 0.0868241, 0.992404, -0.0871557, 0.00759612, 0.0868241, 0.996195, -0.00509691, 0.00261861, 0.00123239)
+
+[node name="StepBR" type="Marker3D" parent="SpiderRig/Step Targets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="BR Ray" type="RayCast3D" parent="SpiderRig/Step Targets/StepBR"]
+transform = Transform3D(0.996195, 0.0871557, 0, -0.0868241, 0.992404, -0.0871557, -0.00759612, 0.0868241, 0.996195, 0, 0, 0)

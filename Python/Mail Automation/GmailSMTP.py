@@ -1,4 +1,10 @@
-import smtplib
+import smtplib as s
+import imaplib as i
+import email
+from email.header import decode_header
+from email.message import EmailMessage
+
+
 import os
 from dotenv import load_dotenv
 
@@ -13,20 +19,50 @@ def resetDir():
     os.chdir(filePath)
     return os.path.abspath(filePath)
 resetDir()
+
 load_dotenv("secrets.env")
 
-smtpObj = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+mail =  os.getenv("mail")
+password =  os.getenv("passkey")
+
+smtpObj = s.SMTP_SSL('smtp.gmail.com', 465)
+inbox = i.IMAP4_SSL("imap.gmail.com")
+#smtpObj.debuglevel = 1
 
 smtpObj.ehlo()
-smtpObj.login('tcstestbot@gmail.com', os.getenv("passkey"))
+smtpObj.login(mail, password)
+inbox.login(mail, password)
+del password
 
-recep = "mayklprime@gmail.com"
+msg = EmailMessage()
+msg["Subject"] = "You have mail"
+msg["From"] = mail
+msg["To"] = "mayklprime@gmail.com"
+msg.set_content("hello I have sent the mail")
 
-subject = "Test Email from Python"
-Text = "hello this is a test email from python"
+#smtpObj.send_message(msg)
+del mail
 
-msg = 'Subject: {}\n\n{}'.format(subject, Text)
+inbox.select('inbox')
+status, messages = inbox.search(None, 'ALL')
+message_ids = messages[0].split()
 
-smtpObj.sendmail(to_addrs=recep, from_addr='tcstestbot@gmail.com' ,  msg=msg)
+for i in message_ids:
+    email_status, msg_data = inbox.fetch(i, "(RFC822)")
+    msg = email.message_from_bytes(msg_data[0][1])
+    print("From:", msg["From"])
+    print("Subject:", decode_header(msg["Subject"])[0][0])
+    print("Date:", msg["Date"])
+    print("")
+    for part in msg.walk():
+        if part.get_content_type() == "text/plain":
+            body = part.get_payload(decode=True)
+            print(body.decode())
+            break
+    print("="*50)
 
+os.environ.pop("mail")
+os.environ.pop("passkey")
 smtpObj.close()
+inbox.logout()
+print("Sent Mail")
