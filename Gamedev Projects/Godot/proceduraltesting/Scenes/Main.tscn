@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlgo70vkkeh65"]
+[gd_scene load_steps=3 format=3 uid="uid://dlgo70vkkeh65"]
 
 [ext_resource type="PackedScene" uid="uid://by5voy63326tk" path="res://Scenes/proced_spider_bot.tscn" id="1_r150o"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_r150o"]
 
 [node name="Node3D" type="Node3D"]
 
 [node name="ProcedSpiderBot" parent="." instance=ExtResource("1_r150o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0474863, 1.0084, 0.125986)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.101003, -0.223192, 0.125986)
 
 [node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -18,3 +20,35 @@ transform = Transform3D(1, 0, 0, 0, 0.931995, 0.362471, 0, -0.362471, 0.931995, 
 transform = Transform3D(-0.158362, 0.583752, -0.796339, -0.25405, 0.755273, 0.60417, 0.954139, 0.297987, 0.0286956, -115.125, 43.2438, 109.51)
 light_color = Color(1, 1, 0.866667, 1)
 light_energy = 4.83
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="GridContainer" type="GridContainer" parent="UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/GridContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/GridContainer/PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="UI/GridContainer/PanelContainer/VBoxContainer"]
+material = SubResource("CanvasItemMaterial_r150o")
+layout_mode = 2
+text = "Hello World"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="UI/GridContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Purchase Button
+"
+flat = true
