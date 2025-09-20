@@ -4,6 +4,12 @@ extends Node3D
 @export var turn_speed: float = 1.0
 
 func _process(delta):
+	
+	
+	movement(delta)
+
+
+func movement(delta):
 	var dir = Input.get_axis("ui_down","ui_up")
 	translate(Vector3(0,0,-dir)*move_speed*delta)
 	

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://by5voy63326tk"]
+[gd_scene load_steps=10 format=4 uid="uid://by5voy63326tk"]
 
 [ext_resource type="Script" uid="uid://c2ak35v55xmdw" path="res://Scripts/StartIK.gd" id="1_0pk6q"]
 [ext_resource type="Script" uid="uid://ddrh57iy8cdjo" path="res://Scripts/proced_spider_bot.gd" id="1_2hbx0"]
 [ext_resource type="Script" uid="uid://jy2jrro05nuk" path="res://Scripts/step_ray.gd" id="3_b4xto"]
 [ext_resource type="Script" uid="uid://dwjoc0sxvjm87" path="res://Scripts/ikTarget.gd" id="3_oi3kn"]
+[ext_resource type="Script" uid="uid://cebqsjbu1ckh6" path="res://Scenes/step_targets.gd" id="4_4kvv5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gxook"]
 
@@ -266,31 +267,40 @@ magnet = Vector3(0, 10, 0)
 target_node = NodePath("../../Front Left Target")
 script = ExtResource("1_0pk6q")
 
-[node name="Front Left Target" type="Marker3D" parent="SpiderRig" node_paths=PackedStringArray("step_target")]
+[node name="Front Left Target" type="Marker3D" parent="SpiderRig" node_paths=PackedStringArray("step_target", "adjLeg", "diagLeg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
 top_level = true
 script = ExtResource("3_oi3kn")
 step_target = NodePath("../Step Targets/FL Ray/StepFL")
+adjLeg = NodePath("../Front Right Target")
+diagLeg = NodePath("../Back Right Target")
 
-[node name="Front Right Target" type="Marker3D" parent="SpiderRig" node_paths=PackedStringArray("step_target")]
+[node name="Front Right Target" type="Marker3D" parent="SpiderRig" node_paths=PackedStringArray("step_target", "adjLeg", "diagLeg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
 top_level = true
 script = ExtResource("3_oi3kn")
 step_target = NodePath("../Step Targets/FR Ray/StepFR")
+adjLeg = NodePath("../Front Left Target")
+diagLeg = NodePath("../Back Left Target")
 
-[node name="Back Left Target" type="Marker3D" parent="SpiderRig" node_paths=PackedStringArray("step_target")]
+[node name="Back Left Target" type="Marker3D" parent="SpiderRig" node_paths=PackedStringArray("step_target", "adjLeg", "diagLeg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
 top_level = true
 script = ExtResource("3_oi3kn")
 step_target = NodePath("../Step Targets/BL Ray/StepBL")
+adjLeg = NodePath("../Back Right Target")
+diagLeg = NodePath("../Front Right Target")
 
-[node name="Back Right Target" type="Marker3D" parent="SpiderRig" node_paths=PackedStringArray("step_target")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
+[node name="Back Right Target" type="Marker3D" parent="SpiderRig" node_paths=PackedStringArray("step_target", "adjLeg", "diagLeg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99761, -0.0190201, -4.02964)
 top_level = true
 script = ExtResource("3_oi3kn")
 step_target = NodePath("../Step Targets/BR Ray/StepBR")
+adjLeg = NodePath("../Back Left Target")
+diagLeg = NodePath("../Front Left Target")
 
 [node name="Step Targets" type="Node3D" parent="SpiderRig"]
+script = ExtResource("4_4kvv5")
 
 [node name="FL Ray" type="RayCast3D" parent="SpiderRig/Step Targets" node_paths=PackedStringArray("step_target")]
 transform = Transform3D(0.996195, -0.0871557, 0, 0.0868241, 0.992404, 0.0871557, -0.00759612, -0.0868241, 0.996195, 2, 0, 2)
