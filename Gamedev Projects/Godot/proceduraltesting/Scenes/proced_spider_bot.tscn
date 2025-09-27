@@ -304,6 +304,7 @@ script = ExtResource("4_4kvv5")
 
 [node name="FL Ray" type="RayCast3D" parent="SpiderRig/Step Targets" node_paths=PackedStringArray("step_target")]
 transform = Transform3D(0.996195, -0.0871557, 0, 0.0868241, 0.992404, 0.0871557, -0.00759612, -0.0868241, 0.996195, 2, 0, 2)
+hit_from_inside = true
 script = ExtResource("3_b4xto")
 step_target = NodePath("StepFL")
 
