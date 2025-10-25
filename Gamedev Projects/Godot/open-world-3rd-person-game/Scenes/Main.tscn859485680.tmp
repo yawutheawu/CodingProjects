@@ -13,14 +13,11 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Arr
 [node name="Player" parent="." instance=ExtResource("2_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.62001, 1.70121, 0.751883)
 
+[node name="ProcedSpiderBot" parent="." instance=ExtResource("2_rgh2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0869236, 1.19917, 0.991918)
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_pbw6q")
 
 [node name="Map" parent="NavigationRegion3D" instance=ExtResource("1_idj7w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.734829, 1.19209e-07, 0.637028)
-
-[node name="ProcedSpiderBot" parent="." instance=ExtResource("2_rgh2o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.2607, 1.19917, 42.9353)
-
-[connection signal="ready" from="." to="." method="_on_ready"]
-[connection signal="Jumped" from="Player" to="ProcedSpiderBot" method="_on_player_jumped"]

@@ -9,6 +9,8 @@ var lastMouse = 0
 # Sensitivity for mouse movement
 var sensitivity = 0.1
 
+signal Jumped
+
 '''
 https://www.youtube.com/@Bonkahe/playlists
 '''
@@ -24,6 +26,7 @@ func _physics_process(delta: float) -> void:
 	# Handle jump input
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		Jumped.emit()
 
 	# Get input direction and handle movement
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")

@@ -1,14 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://b1mlrn7gojhu4"]
 
 [ext_resource type="PackedScene" uid="uid://hishsudx5d23" path="res://Scenes/Map.tscn" id="1_idj7w"]
+[ext_resource type="Script" uid="uid://8pesj50iykei" path="res://Scenes/main.gd" id="1_kln2b"]
 [ext_resource type="PackedScene" uid="uid://y3y1thfwslg5" path="res://Scenes/player.tscn" id="2_kln2b"]
-[ext_resource type="PackedScene" uid="uid://by5voy63326tk" path="res://Scenes/proced_spider_bot.tscn" id="2_rgh2o"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_pbw6q"]
 vertices = PackedVector3Array(27.0738, 0.511354, -6.03014, 28.3238, 0.511354, -6.03014, 28.3238, 0.511354, -79.2801, 26.0738, 0.511354, -5.03014, 25.8238, 0.511354, -3.28014, -80.6762, 0.511354, -79.2801, -80.6762, 0.511354, -3.28014, 30.8238, 0.511354, -5.03014, 31.0738, 0.511354, -3.28014, 78.3238, 0.511354, -3.28014, 30.0738, 0.511354, -5.78014, 78.3238, 0.511354, -79.2801, 27.5738, 2.51135, -5.03014, 26.8238, 2.51135, -4.03014, 27.3238, 2.51135, -4.28014, 27.3238, 2.51135, -2.78014, 27.0738, 2.51135, -2.28014, 29.8238, 2.51135, -4.53014, 29.0738, 2.51135, -5.03014, 29.0738, 2.51135, -4.53014, 29.5738, 2.51135, -3.03014, 30.0738, 2.51135, -3.03014, 27.8238, 2.51135, -2.28014, 28.0738, 2.51135, -1.78014, 28.8238, 2.51135, -2.28014, 29.3238, 2.51135, -2.03014, 29.8238, 0.511354, -3.28014, 29.5738, 0.511354, -4.28014, 28.8238, 0.511354, -4.78014, 27.8238, 0.511354, -4.78014, 27.0738, 0.511354, -3.78014, 27.3238, 0.511354, -2.53014, 28.3238, 0.511354, -2.03014, 28.3238, 0.511354, 79.7199, 28.3238, 0.511354, -0.780144, 26.0738, 0.511354, -1.78014, -80.6762, 0.511354, 79.7199, 30.8238, 0.511354, -2.03014, 29.8238, 0.511354, -1.03014, 78.3238, 0.511354, 79.7199)
 polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 4, 2), PackedInt32Array(2, 4, 6), PackedInt32Array(2, 6, 5), PackedInt32Array(9, 8, 7), PackedInt32Array(10, 9, 7), PackedInt32Array(10, 1, 9), PackedInt32Array(9, 1, 2), PackedInt32Array(9, 2, 11), PackedInt32Array(12, 14, 13), PackedInt32Array(14, 15, 13), PackedInt32Array(13, 15, 16), PackedInt32Array(18, 17, 19), PackedInt32Array(19, 17, 20), PackedInt32Array(20, 17, 21), PackedInt32Array(15, 22, 16), PackedInt32Array(16, 22, 23), PackedInt32Array(24, 20, 25), PackedInt32Array(25, 20, 21), PackedInt32Array(22, 24, 23), PackedInt32Array(23, 24, 25), PackedInt32Array(18, 19, 12), PackedInt32Array(12, 19, 14), PackedInt32Array(26, 28, 27), PackedInt32Array(29, 28, 30), PackedInt32Array(30, 28, 31), PackedInt32Array(31, 28, 32), PackedInt32Array(32, 28, 26), PackedInt32Array(35, 34, 33), PackedInt32Array(35, 33, 4), PackedInt32Array(4, 33, 6), PackedInt32Array(6, 33, 36), PackedInt32Array(37, 8, 9), PackedInt32Array(38, 37, 9), PackedInt32Array(38, 9, 34), PackedInt32Array(34, 9, 33), PackedInt32Array(33, 9, 39)]
 
 [node name="Root" type="Node3D"]
+script = ExtResource("1_kln2b")
 
 [node name="Player" parent="." instance=ExtResource("2_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.62001, 1.70121, 0.751883)
@@ -19,8 +20,4 @@ navigation_mesh = SubResource("NavigationMesh_pbw6q")
 [node name="Map" parent="NavigationRegion3D" instance=ExtResource("1_idj7w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.734829, 1.19209e-07, 0.637028)
 
-[node name="ProcedSpiderBot" parent="." instance=ExtResource("2_rgh2o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.2607, 1.19917, 42.9353)
-
 [connection signal="ready" from="." to="." method="_on_ready"]
-[connection signal="Jumped" from="Player" to="ProcedSpiderBot" method="_on_player_jumped"]

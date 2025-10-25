@@ -48,3 +48,5 @@ transform = Transform3D(0.960469, 0, -0.278388, 0, 1, 0, 0.278388, 0, 0.960469, 
 [node name="Camera3D" type="Camera3D" parent="Camera Controller"]
 transform = Transform3D(0.960469, -0.0970291, 0.260931, 0, 0.937294, 0.348539, -0.278388, -0.334761, 0.900242, 0.643554, 1.48259, 2.22033)
 environment = SubResource("Environment_v0iea")
+
+[connection signal="Jumped" from="." to="." method="_on_jumped"]
