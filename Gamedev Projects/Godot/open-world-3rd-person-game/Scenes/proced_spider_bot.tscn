@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=4 uid="uid://by5voy63326tk"]
 
 [ext_resource type="Script" uid="uid://ddrh57iy8cdjo" path="res://Scripts/proced_spider_bot.gd" id="1_2hbx0"]
-[ext_resource type="Script" path="res://Scripts/step_ray.gd" id="3_b4xto"]
-[ext_resource type="Script" path="res://Scripts/ikTarget.gd" id="3_oi3kn"]
+[ext_resource type="Script" uid="uid://jy2jrro05nuk" path="res://Scripts/step_ray.gd" id="3_b4xto"]
+[ext_resource type="Script" uid="uid://dwjoc0sxvjm87" path="res://Scripts/ikTarget.gd" id="3_oi3kn"]
 [ext_resource type="Script" uid="uid://d1gao28ipon7p" path="res://Scripts/step_targets.gd" id="4_4kvv5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gxook"]
