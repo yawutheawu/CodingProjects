@@ -58,23 +58,23 @@ class Teacher:
         return None
     
 class Student:
-    StuedntIDs = []
+    StudentIDs = []
     Students = []
     def __init__(self, name, age):
         self.name = name
         self.age = age
         potentialID = r.randint(0, 9999)
-        while potentialID in Student.StuedntIDs:
+        while potentialID in Student.StudentIDs:
             potentialID = r.randint(0, 9999)
         self.id = potentialID
-        Student.StuedntIDs.append(potentialID)
+        Student.StudentIDs.append(potentialID)
         Student.Students.append(self)
         self.grades = {}
         self.GPA = None
         self.courses = []
     def addCourse(self, course):
         self.courses.append(course)
-        self.grades[course] = None
+        self.grades[course] = 0
         return True
     def removeCourse(self, courseID):
         failFlag = True
@@ -88,7 +88,12 @@ class Student:
         else:
             return True
     def calcGPA(self):
-        pass
+        gradeList = []
+        for i in self.grades.values():
+            gradeList.append(i)
+        self.GPA = sum(gradeList)/len(gradeList)
+        return self.GPA
+            
     def setGrade(self, courseID, grade):
         if courseID in self.grades:
             self.grades[courseID] = grade
@@ -154,6 +159,19 @@ class Course:
                 if j == self.courseID:
                     classList["Teacher"] = i.name
         return classList
+    def getClasslistIDs(self):
+        classList = {}
+        studentList = []
+        for i in Student.Students:
+            for j in i.courses:
+                if j == self.courseID:
+                    studentList.append(i.id)
+        classList["Students"] = studentList
+        for i in Teacher.Teachers:
+            for j in i.courses:
+                if j == self.courseID:
+                    classList["Teacher"] = i.id
+        return classList
 
 if __name__ == "__main__":
     #Teachers
@@ -200,3 +218,8 @@ if __name__ == "__main__":
     print(history101.getClasslist())
     print(math101.getClasslist())
     #Add function that gets classlist with IDs of students and teachers
+    historyClass = history101.getClasslistIDs()
+    mathClass = math101.getClasslistIDs()
+    
+    print(Student.getStudentfromID(historyClass["Students"][0]).grades)
+    print(Student.getStudentfromID(historyClass["Students"][0]).calcGPA())
