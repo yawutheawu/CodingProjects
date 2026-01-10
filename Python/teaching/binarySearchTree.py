@@ -31,6 +31,21 @@ def search(root, value):
     else:
         return search(root.rightChild, value)
 
+
+def searchNode(root, value):
+    # node is empty
+    if root is None:
+        return BinaryTreeNode(None)
+    # if element is equal to the element to be searched
+    elif root.data == value:
+        return root
+    # element to be searched is less than the current node
+    elif root.data > value:
+        return search(root.leftChild, value)
+    # element to be searched is greater than the current node
+    else:
+        return search(root.rightChild, value)
+
 realTreeRoot = BinaryTreeNode(50)
 realTreeRoot = insert(realTreeRoot, 25)
 realTreeRoot = insert(realTreeRoot, 75)
@@ -39,4 +54,5 @@ realTreeRoot = insert(realTreeRoot, 35)
 realTreeRoot = insert(realTreeRoot, 60)
 realTreeRoot = insert(realTreeRoot, 85)
 
-# Next Class write deletiong functions with recursive pulling of right node data into data main node data
+print(searchNode(realTreeRoot, 10))
+print(searchNode(realTreeRoot, 99))
