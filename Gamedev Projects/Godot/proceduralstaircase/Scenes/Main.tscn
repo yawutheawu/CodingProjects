@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://1lgsasc7i24b"]
+
+[ext_resource type="Script" uid="uid://36xm8jpd6dpk" path="res://Scenes/stairsGen.gd" id="1_r150o"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.951164, 0.308685, 0, -0.308685, 0.951164, 0, 0.69196, 1.77512)
+
+[node name="Stairs" type="Node3D" parent="."]
+script = ExtResource("1_r150o")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00507, -0.761877)
