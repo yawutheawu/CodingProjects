@@ -41,11 +41,24 @@ for i in SquareIterator([10,20,30,40,50]):
 print()
 
 class FibonacciIterator:
-    def __init__(self, stop=10):
-        self._stop = stop
-        self._index = 0
+    def __init__(self, start = 10, stop=None):
+        if stop == None:
+            self._index = 0
+            self._stop = start
+        else:
+            self._index = start
+            self._stop = stop
+        tempVar = 0
         self._current = 0
         self._next = 1
+        while tempVar < self._index:
+            tempVar += 1
+            fib_number = self._current
+            self._current, self._next = (
+                self._next,
+                self._current + self._next
+            )
+        del tempVar
 
     def __iter__(self):
         return self
@@ -62,6 +75,5 @@ class FibonacciIterator:
         else:
             raise StopIteration
         
-for k,i in enumerate(FibonacciIterator(99999999)):
-    print(i)
-    print(k)
+for k,i in enumerate(FibonacciIterator(400,500)):
+    print(k,i)
