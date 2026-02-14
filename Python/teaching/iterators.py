@@ -53,7 +53,6 @@ class FibonacciIterator:
         self._next = 1
         while tempVar < self._index:
             tempVar += 1
-            fib_number = self._current
             self._current, self._next = (
                 self._next,
                 self._current + self._next
@@ -74,6 +73,9 @@ class FibonacciIterator:
             return fib_number
         else:
             raise StopIteration
-        
-for k,i in enumerate(FibonacciIterator(400,500)):
-    print(k,i)
+
+startPoint = 0
+endPoint = 10
+
+for k,i in enumerate(FibonacciIterator(startPoint,endPoint+1)):
+    print(startPoint + k,i)
