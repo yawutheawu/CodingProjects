@@ -1,0 +1,34 @@
+body {
+  background-color: #1657be; /* Using a color name */
+}
+
+h1.fun {
+  color: #ff5733; /* Using a hex code */
+  font-family: 'Arial', sans-serif; /* Using a font family */
+  text-align: center;
+}
+
+div.repeated {
+  background-color: rgb(31, 112, 174); /* Using an RGB value */
+  padding: 20px;
+  margin: 10px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  display: grid;
+}
+
+div.repeatable {
+  background-color: #107a71;
+  padding: 15px 5px 15px 5px;
+  margin: 5px;
+  text-align: center;
+  display: inline-block;
+}
+
+div.error {
+  background-color: #ff0000; /* Red background for error */
+  color: #800000;
+  padding: 10px;
+  margin: 10px;
+  border: 15px groove #a10000; /* Black border for emphasis */
+  text-align: center;
+}

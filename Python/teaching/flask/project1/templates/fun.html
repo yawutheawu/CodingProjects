@@ -1,0 +1,19 @@
+<!doctype html>
+
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+
+<title class="fun">the fun page</title>
+<h1 class="fun">This page is certifed fun!</h1>
+
+<p>Here is some fun content. You can add whatever you want here, but make sure to have fun doing it!</p>
+{% if var3 %}
+<div class="error">{{ var3 }}</div>
+{% endif %}
+
+
+<div class="repeated">
+{%for i in range(var2) %}
+  <div class = "repeatable">{{ var1 }}</div>
+{% endfor %}
+</div>
+<a href="{{ url_for('hello') }}">Go back to greeting</a>
