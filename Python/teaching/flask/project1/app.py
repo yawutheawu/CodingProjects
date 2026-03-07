@@ -1,4 +1,4 @@
-from flask import Flask,render_template,abort, redirect, url_for
+from flask import Flask, request, render_template,abort, redirect, url_for
 from markupsafe import Markup
 
 app = Flask(__name__)
@@ -31,6 +31,31 @@ def fun(var1=None,var2=1):
         var2 = 1
         var3 = "The second variable must be an integer. Defaulting to 1."
     return render_template('fun.html', var1=var1, var2=var2, var3=var3)
+
+
+
+@app.route('/formTest')
+@app.route('/formTest/', methods =["GET", "POST"])
+def formTest():
+    if request.method == "POST":
+        fname = request.form.get("fname")
+        lname = request.form.get("lname")
+        return 'Your name is {} {}'.format(fname,lname)
+    return render_template('formTest.html')
+
+@app.route('/formTest2')
+@app.route('/formTest2/', methods =["GET", "POST"])
+def formTest2():
+    if request.method == "POST":
+        fname = request.form.get("fname")
+        lname = request.form.get("lname")
+        return render_template('formResult.html',
+                               fname=fname,
+                               lname=lname,
+                               option= request.form['options'],
+                               drinks = request.form.getlist('drinks')
+                            )
+    return render_template('formTest2.html')
 
 if __name__ == "__main__":
     app.run(debug=True,host='0.0.0.0')

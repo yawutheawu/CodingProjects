@@ -1,0 +1,20 @@
+<!doctype html>
+
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+<title>Form Result</title>
+<h1> Hello {{ fname }} {{ lname }}!</h1>
+
+<p1> You seem to enjoy {{ option }}</p1>
+
+{% if drinks|length == 0 %}
+{% elif drinks|length == 1 %}
+    <br>
+    <p1> You like {{ drinks[0] }}</p1>
+{% else %}
+    <p1> You also like these drinks:</p1>
+    <ul>
+    {% for drink in drinks %}
+        <li>{{ drink }}</li>
+    {% endfor %}
+    </ul>
+{% endif %}

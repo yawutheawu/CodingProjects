@@ -1,0 +1,27 @@
+<!doctype html>
+
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+
+
+<form action="{{ url_for("formTest2")}}" method="post">
+<label for="firstname">First Name:</label>
+<input type="text" id="firstname" name="fname" placeholder="firstname">
+<label for="lastname">Last Name:</label>
+<input type="text" id="lastname" name="lname" placeholder="lastname">
+<h3>Choose an Food:</h6>
+<input type="radio" name="options" id="option1" value = "Potato"> Potato <br>
+<input type="radio" name="options" id="option2" value = "Lettuce"> Lettuce <br>
+<input type="radio" name="options" id="option3" value = "Tomato"> Tomato <br>
+<h3>Have your pick:</h3>
+<input type="checkbox" name="drinks" value="CocaCola" id="option1">
+<label for="drinks">CocaCola</label>
+
+
+<input type="checkbox" name="drinks" value="Pepsi" id="option2">
+<label for="drinks">Pepsi</label>
+
+<input type="checkbox" name="drinks" value="Water" id="option3">
+<label for="drinks">Water</label>
+
+<br>
+<button type="submit">Login</button>
