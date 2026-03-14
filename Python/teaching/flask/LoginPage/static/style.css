@@ -1,0 +1,71 @@
+:root {
+    --inputPadding: 0.5em;
+}
+
+
+.login-container {
+    width: 400px;
+    margin: 175px auto;
+    padding: 35px;
+    border: 1px solid #ccc;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0em 0.5em 15px rgba(0, 0, 0, 0.25);
+}
+
+.inputInstruction {
+    margin: 0px 0px 10px 0px;
+    font-size: 2em;
+    color: #000000;
+    text-align: center;
+}
+
+input::placeholder {
+  color: #c0c0c0; /* Change the color */
+  font-style: italic; /* Add some style */
+}
+
+input {
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+}
+
+div.SubForm {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:0;
+}
+div.input{
+    grid-column: 1/-1;
+    width: 100%;
+}
+
+div.input-name {
+    grid-column: span 1;
+    width: 100%;
+}
+
+input {
+    width: 100%;
+    padding: var(--inputPadding);
+}
+
+div.error {
+    color: red;
+    background-color: lightcoral;
+    border-radius: 0.5em;
+    border: 0.15em solid red;
+    margin-top: 0.5em;
+}
+
+div.success {
+    color: green;
+    background-color: lightgreen;
+    border-radius: 0.5em;
+    border: 0.15em solid green;
+    margin-top: 0.5em;
+}
+
+button {
+    text-align: center;
+}

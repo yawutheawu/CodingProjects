@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>  
+    <meta charset="utf-8">
+    <title>Registration</title>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <h2 class="inputInstruction">Registration</h2>
+        <form class="front" method="POST" action="/registration/">
+            <div class="SubForm">
+                <div class="input-name">
+                    {% if failName:%}
+                        <input type="text" class="form-control-name" id="firstName" name="firstName" placeholder="First Name" value = {{failName}} required>
+                    {%else:%}
+                        <input type="text" class="form-control-name" id="firstName" name="firstName" placeholder="First Name" required>
+                    {% endif %}
+                </div>
+                <div class="input-name">
+                    {% if failLast:%}
+                        <input type="text" class="form-control-name" id="lastName" name="lastName" placeholder="Last Name" value = {{failLast}} required>
+                    {%else:%}
+                        <input type="text" class="form-control-name" id="lastName" name="lastName" placeholder="Last Name" required>
+                    {% endif %}
+                </div>
+                <div class="input">
+                    {% if failEmail:%}
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" value = {{failEmail}} required>
+                    {%else:%}
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                    {% endif %}
+                </div>
+                <div class="input">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                </div>
+                <div class="input">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                </div>
+            </div>
+            <button type="submit" class="regSubmission">Register</button>
+        </form>
+        {% if error %}
+            <div class="error" role="alert">
+                {% if error == "Username already exists" %}
+                    Username already exists
+                {% elif error == "Email already exists" %}
+                    Account with Email already exists
+                {% else %}
+                    Unknown error: {{ error }}
+                {% endif %}
+            </div>
+        {% endif %}
+        {% if success %}
+            <div class="success" role="alert">
+                Registration successful!
+            </div>
+        {% endif %}
+
+        <div class="AlternateActions">
+            <a href="{{ url_for('index') }}">Go Back to Login</a>
+        </div>
+    </div>
+</body>
