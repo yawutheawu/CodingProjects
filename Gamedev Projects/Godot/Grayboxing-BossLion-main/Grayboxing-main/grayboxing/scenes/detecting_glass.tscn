@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://i0uykhh7hqxt"]
+
+[ext_resource type="Script" uid="uid://d4eu3ahunjpnb" path="res://scripts/detecting_glass.gd" id="1_cbeqp"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ns6u7"]
+data = PackedVector3Array(-0.761719, -0.0502319, 0.8979, -0.761719, -0.0502319, -0.8979, -0.761719, 0.0502319, -0.8979, 0.761719, -0.0502319, -0.8979, -0.761719, -0.0502319, -0.8979, -0.761719, -0.0502319, 0.8979, -0.761719, 0.0502319, -0.8979, -0.761719, -0.0502319, -0.8979, 0.761719, -0.0502319, -0.8979, -0.761719, 0.0502319, -0.8979, -0.761719, 0.0502319, 0.8979, -0.761719, -0.0502319, 0.8979, -0.761719, -0.0502319, 0.8979, -0.761719, 0.0502319, 0.8979, 0.761719, 0.0502319, 0.8979, 0.761719, 0.0502319, 0.8979, -0.761719, 0.0502319, 0.8979, -0.761719, 0.0502319, -0.8979, -0.761719, -0.0502319, 0.8979, 0.761719, -0.0502319, 0.8979, 0.761719, -0.0502319, -0.8979, 0.761719, 0.0502319, 0.8979, 0.761719, -0.0502319, 0.8979, -0.761719, -0.0502319, 0.8979, 0.761719, -0.0502319, -0.8979, 0.761719, -0.0502319, 0.8979, 0.761719, 0.0502319, 0.8979, 0.761719, -0.0502319, -0.8979, 0.761719, 0.0502319, -0.8979, -0.761719, 0.0502319, -0.8979, -0.761719, 0.0502319, -0.8979, 0.761719, 0.0502319, -0.8979, 0.761719, 0.0502319, 0.8979, 0.761719, 0.0502319, 0.8979, 0.761719, 0.0502319, -0.8979, 0.761719, -0.0502319, -0.8979)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("1_cbeqp")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Area3D"]
+use_collision = true
+size = Vector3(1.52344, 0.100464, 1.7958)
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.099353, 0)
+shape = SubResource("ConcavePolygonShape3D_ns6u7")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="Area3D" method="_on_timer_timeout"]

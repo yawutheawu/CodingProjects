@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhy45d3arxkwt"]
+
+[ext_resource type="Script" uid="uid://dqnirej1wk8q8" path="res://scripts/shatterglass.gd" id="1_8708d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8708d"]
+size = Vector3(1.53796, 0.135132, 1.85352)
+
+[node name="RigidBody3D" type="RigidBody3D"]
+script = ExtResource("1_8708d")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+size = Vector3(1.52344, 0.100464, 1.7958)
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0114109, -0.00627333, -0.0625623)
+shape = SubResource("BoxShape3D_8708d")

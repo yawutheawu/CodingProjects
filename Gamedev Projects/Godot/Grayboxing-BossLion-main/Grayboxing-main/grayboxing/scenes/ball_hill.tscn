@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4fe8b6j6f2dk"]
+
+[ext_resource type="Script" uid="uid://dyifefa8ux30k" path="res://scripts/ballSpawner.gd" id="1_vw3ki"]
+
+[node name="Ball hill" type="Node3D"]
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+transform = Transform3D(17.8023, 0, 0, 0, 9.6082, 0, 0, 0, 8.31318, 0, 0, 0)
+use_collision = true
+polygon = PackedVector2Array(0, 0, 0, 1, 0.489008, 0.517494, 1, 0)
+
+[node name="BallSpawn" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.898663, 15.2849, -4.73127)
+script = ExtResource("1_vw3ki")
+
+[node name="Timer" type="Timer" parent="BallSpawn"]
+wait_time = 0.8
+autostart = true
+
+[connection signal="timeout" from="BallSpawn/Timer" to="BallSpawn" method="_on_timer_timeout"]
