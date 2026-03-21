@@ -51,7 +51,23 @@ with sql.connect("logins.db") as connection:
 @app.route("/index")
 @app.route("/login/", methods =["GET", "POST"])
 def index():
-    return render_template("login.html")
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+        with sql.connect("logins.db") as connection:
+            cursor = connection.cursor()
+            cursor.execute("SELECT * FROM users WHERE username = ? AND password = ?", (username, password))
+            print("SELECT * FROM users WHERE username = {} AND password = {}".format(username, password))
+            user = cursor.fetchone()
+            print(user)
+            if user:
+                error_message = "Login successful! Welcome, {} {}.".format(user[3], user[4])
+                return render_template("login.html", error=error_message, success=True)
+                #return render_template("welcome.html", name=user[3])
+            else:
+                error_message = "Invalid username or password. Please try again."
+                return render_template("login.html", error=error_message, success=False, username=username)
+    return render_template("login.html", success=True)
 
 @app.route("/recovery")
 def forgot_password():
