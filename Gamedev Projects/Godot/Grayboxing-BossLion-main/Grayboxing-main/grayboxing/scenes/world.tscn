@@ -108,11 +108,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55344, 2.806, -2.06602)
 operation = 2
 size = Vector3(11.6065, 6.19348, 17.3638)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Level1" unique_id=1201169104]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5976, 33.2126, 0)
-light_energy = 4.983
-omni_range = 1000.0
-
 [node name="Platforms" type="Node" parent="Level1" unique_id=1545456246]
 
 [node name="Platform 1" type="CSGBox3D" parent="Level1/Platforms" unique_id=1488201931]
@@ -1002,14 +997,24 @@ height = 4.52417
 [node name="Level2" type="Node" parent="." unique_id=1938904197]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Level2" unique_id=1621365197]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.015827, 26.283695, 36.685192)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.863087, 26.283695, 40.529804)
 use_collision = true
-size = Vector3(30.025269, 0.6385498, 19.69043)
+size = Vector3(41.719788, 0.6385498, 109.58995)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Level2" unique_id=741433012]
 transform = Transform3D(-0.008168027, -0.9999667, 0, 0.9999667, -0.008168027, 0, 0, 0, 1, 42.759037, 60.69214, 40.460155)
 use_collision = true
 size = Vector3(98.84445, 0.6385498, 109.47717)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Level2" unique_id=270048392]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.95103, 52.56739, 34.23118)
+use_collision = true
+size = Vector3(41.719788, 0.6385498, 109.58995)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Level2" unique_id=158255081]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 143.24237, 20.886894, 35.65796)
+use_collision = true
+size = Vector3(41.719788, 0.6385498, 109.58995)
 
 [node name="Player" parent="." unique_id=1406895329 instance=ExtResource("1_rwgxs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.999762, 50.06954, 31.941423)
@@ -1019,6 +1024,52 @@ script = ExtResource("2_4wyf3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0676246, 0.630024, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Player/Node3D" unique_id=1210108809]
+
+[node name="Lighting" type="Node" parent="." unique_id=1080942569]
+
+[node name="FakeBacklight" type="OmniLight3D" parent="Lighting" unique_id=1201169104]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5976, 33.2126, 0)
+light_color = Color(1, 1, 0.79607844, 1)
+light_energy = 7.5
+omni_range = 1000.0
+omni_attenuation = 0.75
+
+[node name="Key" type="SpotLight3D" parent="Lighting" unique_id=1752295031]
+transform = Transform3D(1, 0, 0, 0, -0.49227175, 0.87044156, 0, -0.87044156, -0.49227175, -19.587845, 74.48805, -71.260315)
+light_color = Color(0.8627451, 1, 1, 1)
+light_energy = 20.0
+light_indirect_energy = 2.577
+light_volumetric_fog_energy = 1.451
+light_size = 0.75
+light_specular = 3.4
+shadow_enabled = true
+shadow_bias = 10.0
+shadow_normal_bias = 4.803
+shadow_reverse_cull_face = true
+shadow_transmittance_bias = 16.0
+shadow_blur = 1.563
+spot_range = 126.39324
+spot_attenuation = 0.75
+spot_angle = 52.847466
+spot_angle_attenuation = 0.7578581
+
+[node name="Fill" type="SpotLight3D" parent="Lighting" unique_id=1052009122]
+transform = Transform3D(1, 0, 0, 0, 0.47649878, 0.8791751, 0, -0.8791751, 0.47649878, -23.698414, 81.386475, 47.63033)
+light_energy = 6.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 0.0
+light_size = 0.25
+light_specular = 2.0
+shadow_enabled = true
+shadow_bias = 4.0
+shadow_normal_bias = 10.0
+shadow_reverse_cull_face = true
+shadow_opacity = 0.65
+shadow_blur = 0.75
+spot_range = 132.08688
+spot_attenuation = 0.75
+spot_angle = 46.49073
+spot_angle_attenuation = 1.5157168
 
 [connection signal="body_entered" from="Level1/Guessing game/Gate 1/Area3D" to="Level1/Guessing game/Gate 1/Area3D" method="_on_body_entered"]
 [connection signal="body_entered" from="Level1/Guessing game/Gate 2/Area3D2" to="Level1/Guessing game/Gate 2/Area3D2" method="_on_body_entered"]

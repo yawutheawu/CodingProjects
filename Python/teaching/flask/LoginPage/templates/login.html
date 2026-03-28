@@ -6,7 +6,7 @@
     <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div class="login-container">
+    <div class="Container">
         <h2 class="inputInstruction">Login</h2>
         <form method="POST" action="/login">
             <div class="input">
@@ -19,7 +19,9 @@
             <div class="input">
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
             </div>
-            <button type="submit" class="fullWidthSubmission">Login</button>
+            <div class="input">
+                <button type="submit" class="fullWidthSubmission">Login</button>
+            </div>
         </form>
         {% if error %}
             <div class="error" role="alert">

@@ -62,8 +62,7 @@ def index():
             print(user)
             if user:
                 error_message = "Login successful! Welcome, {} {}.".format(user[3], user[4])
-                return render_template("login.html", error=error_message, success=True)
-                #return render_template("welcome.html", name=user[3])
+                return render_template("dashboard.html", username=user[3])
             else:
                 error_message = "Invalid username or password. Please try again."
                 return render_template("login.html", error=error_message, success=False, username=username)
@@ -106,6 +105,13 @@ def register():
         else:    
             return render_template("register.html", error = iferror, success = success, failName = fname, failLast = lname, failEmail = email)
     return render_template("register.html", error = iferror, success = success, failName = None, failLast = None, failEmail = None)
+
+@app.route("/dashboard", methods =["GET", "POST"])
+def dashboard(user = None):
+    if user == None:
+         return render_template("login.html", success=False)
+    else:
+        return render_template("dashboard.html",username = user)
 
 if __name__ == "__main__":
     app.run(debug=debugMode,host='0.0.0.0')
