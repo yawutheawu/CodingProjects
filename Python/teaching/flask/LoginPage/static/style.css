@@ -1,137 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600&display=swap');
+
 :root {
-    --inputPadding: 0.5em;
+    --inputPadding: 0.6em;
+    --accent: #4aff00;
+    --accent-dim: #2ecc00;
+    --bg: #000000;
+    --surface: #0d0d0d;
+    --border: #2a2a2a;
+    --text: #d0d0d0;
+    --placeholder: #555;
     box-sizing: border-box;
 }
 
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
 body {
-    background-color: #575757;
-}
-
-
-.inputInstruction {
-    margin: 0px 0px 10px 0px;
-    font-size: 2em;
-    color: #4aff00;
-    text-align: center;
-    grid-column: 3/3;
-    grid-row: 1/2;
-}
-
-div {
+    background-color: #1a1a1a;
+    background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(74, 255, 0, 0.04) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(74, 255, 0, 0.03) 0%, transparent 50%);
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Rajdhani', 'Courier New', monospace;
+    color: var(--text);
+    display: flex;
     align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
 }
+
+/* ── Container ─────────────────────────────────────────── */
+
+div.Container {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    box-shadow:
+        0 0 0 1px rgba(74, 255, 0, 0.08),
+        0 8px 40px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(74, 255, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* ── Headings ───────────────────────────────────────────── */
+
+.inputInstruction,
+div.DashboardHeader > h1 {
+    font-family: 'Share Tech Mono', 'Courier New', monospace;
+    font-size: 1.8em;
+    color: var(--accent);
+    text-align: center;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 18px rgba(74, 255, 0, 0.35);
+}
+
+div.DashboardHeader {
+    text-align: center;
+}
+
+/* ── Forms ──────────────────────────────────────────────── */
 
 div.Container > form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 0;
-    grid-column: 2/5;
-    grid-row: 2/5;
-    justify-content: center;
-    align-items: center;
-}
-
-div.Container > div.AlternateActions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    grid-column: 1/6;
-    grid-row: 5/6;
-    justify-content: center;
-    align-items: center;
-}
-
-input::placeholder {
-  color: #c0c0c0; /* Change the color */
-  font-style: italic; /* Add some style */
-}
-
-input {
-    margin-top: 0.1em;
-    margin-bottom: 0.1em;
+    width: 100%;
 }
 
 div.SubForm {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap:0;
+    gap: 0;
+    width: 100%;
 }
 
-div.input{
-    display: block;
-    box-sizing: border-box;
-    grid-column: 1/-1;
-    width: 100%;
-    align-items: center;
-    padding: var(--inputPadding);
-    margin: 0;
-    border-width: 0;
+/* Full-width inputs inside SubForm — only name fields stay side-by-side */
+div.SubForm > div.input {
+    grid-column: 1 / -1;
 }
 
-div.input > button {
-    box-sizing: border-box;
+/* ── Inputs ─────────────────────────────────────────────── */
+
+div.input,
+div.input-name {
     display: block;
     width: 100%;
-    height: 100%;
-    padding:var(--inputPadding);
+    padding: 0.3em var(--inputPadding);
 }
 
 div.input-name {
-    grid-column: span 1;
-    width: 100%;
+    padding: 0.3em 0.3em;
 }
 
 input {
+    display: block;
     width: 100%;
-    padding: var(--inputPadding);
+    padding: var(--inputPadding) 0.8em;
+    background-color: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-family: 'Rajdhani', monospace;
+    font-size: 1rem;
+    margin: 0;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
 }
 
+input:focus {
+    border-color: var(--accent-dim);
+    box-shadow: 0 0 0 2px rgba(74, 255, 0, 0.12);
+}
+
+input::placeholder {
+    color: var(--placeholder);
+    font-style: italic;
+}
+
+/* ── Buttons ────────────────────────────────────────────── */
+
+button,
+div.input > button,
+button.fullWidthSubmission,
+button.regSubmission {
+    display: block;
+    width: 100%;
+    padding: 0.65em 1em;
+    background-color: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent-dim);
+    border-radius: 4px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.18s, box-shadow 0.18s, color 0.18s;
+    margin-top: 0.4em;
+}
+
+button:hover,
+div.input > button:hover {
+    background-color: var(--accent);
+    color: #000;
+    box-shadow: 0 0 14px rgba(74, 255, 0, 0.4);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+/* ── Alternate actions (links row) ─────────────────────── */
+
+div.AlternateActions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+}
+
+div.AlternateActions a {
+    color: #888;
+    font-size: 0.85rem;
+    text-decoration: none;
+    font-family: 'Rajdhani', monospace;
+    letter-spacing: 0.03em;
+    transition: color 0.15s;
+}
+
+div.AlternateActions a:hover {
+    color: var(--accent);
+}
+
+/* ── Alerts ─────────────────────────────────────────────── */
+
 div.error {
-    color: red;
-    background-color: lightcoral;
-    border-radius: 0.5em;
-    border: 0.15em solid red;
-    margin-top: 0.5em;
+    color: #ff4d4d;
+    background-color: rgba(255, 77, 77, 0.08);
+    border-radius: 4px;
+    border: 1px solid rgba(255, 77, 77, 0.4);
+    padding: 0.6em 0.9em;
+    font-size: 0.9rem;
 }
 
 div.success {
-    color: green;
-    background-color: lightgreen;
-    border-radius: 0.5em;
-    border: 0.15em solid green;
-    margin-top: 0.5em;
-}
-
-button {
-    text-align: center;
-}
-
-div.Container {
-    width: 90%;
-    height: 95%;
-    margin: 175px auto;
-    padding: 35px;
-    border: 1px solid #474747;
-    background-color: #000000;
-    text-align: center;
-    border-radius: 5px;
-    box-shadow: 0em 0.5em 15px rgba(0, 0, 0, 0.25);
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    gap: 0;
-}
-
-div.DashboardHeader {
-    grid-column: 1/-1;
-    grid-row: 1;
-    justify-content: center;
-    align-items: center;
-}
-
-div.DashboardHeader > h1 {
-    font-size: 2em;
-    color: #4aff00;
-    text-align: center;
-    font-family: "Courier New", "Lucida Console", Arial, Helvetica, sans-serif;
+    color: var(--accent);
+    background-color: rgba(74, 255, 0, 0.07);
+    border-radius: 4px;
+    border: 1px solid rgba(74, 255, 0, 0.3);
+    padding: 0.6em 0.9em;
+    font-size: 0.9rem;
 }

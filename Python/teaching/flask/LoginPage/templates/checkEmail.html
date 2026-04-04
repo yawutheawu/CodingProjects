@@ -8,17 +8,13 @@
 <body>
     <div class="Container">
         <h2 class="inputInstruction">Password Reset</h2>
-        <form class="front" method="POST" action="{{ url_for('forgot_password') }}/">
+        <form class="front" method="POST" action="/forgot-password/">
             <div class="SubForm">
                 <div class="input">
-                    {% if failEmail:%}
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" value = {{failEmail}} required>
-                    {%else:%}
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
-                    {% endif %}
+                    <input type="reset_code" class="form-control" id="reset_code" name="reset_code" placeholder="Reset Code" required>
                 </div>
             </div>
-            <button type="submit" class="regSubmission">Send Reset Link</button>
+            <button type="submit" class="regSubmission">Submit Reset Code</button>
         </form>
         {% if error %}
             <div class="error" role="alert">
@@ -27,7 +23,7 @@
         {% endif %}
         {% if success %}
             <div class="success" role="alert">
-                Email Sent!
+                Email Found!
             </div>
         {% endif %}
 

@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://x1dnkyiu33fy" path="res://assets/McDonald's_square_2020.svg" id="10_e3hyu"]
 [ext_resource type="Texture2D" uid="uid://yxbp3gkunui5" path="res://assets/images.jpg" id="11_q5onr"]
 [ext_resource type="Script" uid="uid://bb571la2ujdpt" path="res://scenes/teleporter.gd" id="12_q5onr"]
+[ext_resource type="PackedScene" uid="uid://cq5aiov1y5w42" path="res://scenes/generate_staircase.tscn" id="13_jhx03"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rwgxs"]
 
@@ -1070,6 +1071,9 @@ spot_range = 132.08688
 spot_attenuation = 0.75
 spot_angle = 46.49073
 spot_angle_attenuation = 1.5157168
+
+[node name="generateStaircase" parent="." unique_id=69184401 instance=ExtResource("13_jhx03")]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, -2.7439766, 26.727905, 42.16278)
 
 [connection signal="body_entered" from="Level1/Guessing game/Gate 1/Area3D" to="Level1/Guessing game/Gate 1/Area3D" method="_on_body_entered"]
 [connection signal="body_entered" from="Level1/Guessing game/Gate 2/Area3D2" to="Level1/Guessing game/Gate 2/Area3D2" method="_on_body_entered"]

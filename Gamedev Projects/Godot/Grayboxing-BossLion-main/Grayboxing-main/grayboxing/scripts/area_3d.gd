@@ -12,7 +12,6 @@ func _process(delta: float) -> void:
 	
 	
 func _on_body_entered(body: Node3D) -> void:
-	print(body.name)
 	if body.name == "Player":
 		get_tree().reload_current_scene()
 

@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://c54a3ibmlw1e5"]
+
+[node name="Step" type="CSGBox3D" unique_id=1763908812]
+transform = Transform3D(1, 0, 0, 0, 0.124, 0, 0, 0, 0.237, 0, 0, 0)

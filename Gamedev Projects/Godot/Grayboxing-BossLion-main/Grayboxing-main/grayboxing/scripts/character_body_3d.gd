@@ -49,11 +49,16 @@ func _physics_process(delta: float) -> void:
 		jump = 0
 	# Handle jump input
 	if Input.is_action_just_pressed("ui_accept") and jump <= 1:
-		if jump == 0:
-			velocity.y = JUMP_VELOCITY * gravity_direction
-		else:
+		if jump <= 1:
+			if velocity.y * gravity_direction > 0:
+				pass
+			else:
+				velocity.y = 0
 			velocity.y += JUMP_VELOCITY * gravity_direction
-		jump += 1
+			jump += 1
+		else:
+			pass
+			
 
 	# Get input direction and handle movement
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")

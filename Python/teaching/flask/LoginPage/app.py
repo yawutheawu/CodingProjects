@@ -3,6 +3,7 @@ from markupsafe import Markup
 import sqlite3 as sql
 import pandas as pd
 import os
+import emailHandler as emailFella
 
 def resetDir():
     fileName = __file__
@@ -25,6 +26,8 @@ rows = cursor.fetchall() (or .fetchone() or fetchmany(n))
 for row in rows:
     print(row)
 '''
+
+recoveryList = {}
 
 app = Flask(__name__)
 with sql.connect("logins.db") as connection:
@@ -68,9 +71,66 @@ def index():
                 return render_template("login.html", error=error_message, success=False, username=username)
     return render_template("login.html", success=True)
 
-@app.route("/recovery")
+@app.route("/forgot-password/", methods =["GET", "POST"])
+@app.route("/recovery/", methods =["GET", "POST"])
 def forgot_password():
-    return render_template("forgot_password.html")
+    if request.method == "POST":
+        email = request.form.get("email")
+        print(email)
+        if email != None:
+            email = email.lower()
+        with sql.connect("logins.db") as connection:
+            cursor = connection.cursor()
+            cursor.execute("SELECT * FROM users WHERE email = ?", (email,))
+            user = cursor.fetchone()
+            if user:
+                # Simulate sending recovery email
+                recoveryList[email] = emailFella.sendPasswordResetEmail(email)
+                return render_template("checkEmail.html", email=email)
+            else:
+                error_message = "Email not found. Please try again."
+                return render_template("forgot_password.html", success=False, error=error_message, failEmail=email)
+    return render_template("forgot_password.html", success=False, error=None, failEmail=None)
+
+@app.route("/recoveryCode", methods =["GET", "POST"])
+def checkEmail(email = None):
+    print(email)
+    print(reset_code)
+    print(recoveryList)
+    print(email)
+    if request.method == "POST":
+        email = request.form.get("email").lower()
+        reset_code = request.form.get("reset_code")
+        try:
+            reset_code = int(reset_code)
+        except:
+            pass
+        print(reset_code)
+        if email in recoveryList and recoveryList[email] == reset_code:
+            return render_template("resetPassword.html", email=email, reset_code=reset_code)
+        else:
+            error_message = "Invalid reset code. Please try again."
+            return render_template("checkEmail.html", success=False, error=error_message, email=email)
+    return render_template("checkEmail.html", email=email, success=None, error=None)
+
+@app.route("/recoveryReset", methods =["GET", "POST"])
+def resetPassword(email = None, reset_code = None):
+    print(email)
+    print(reset_code)
+    print(recoveryList)
+    if request.method == "POST":
+        new_password = request.form.get("password")
+        if email in recoveryList and recoveryList[email] == reset_code:
+            with sql.connect("logins.db") as connection:
+                cursor = connection.cursor()
+                cursor.execute("UPDATE users SET password = ? WHERE email = ?", (new_password, email))
+                user = cursor.fetchone()
+            del recoveryList[email]
+            return render_template("resetPassword.html", success=True, email=email)
+        else:
+            error_message = "Invalid password. Please try again."
+            return render_template("resetPassword.html", success=False, error=error_message, email=email)
+    return render_template("resetPassword.html", email=email, success=None, error=None)
 
 @app.route("/registration/", methods =["GET", "POST"])
 def register():
