@@ -1,14 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://1lgsasc7i24b"]
+[gd_scene format=3 uid="uid://1lgsasc7i24b"]
 
-[ext_resource type="Script" uid="uid://36xm8jpd6dpk" path="res://Scenes/stairsGen.gd" id="1_r150o"]
+[ext_resource type="PackedScene" uid="uid://cd451iyak1kmh" path="res://Scenes/player_ball.tscn" id="1_r150o"]
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" unique_id=1496052853]
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.951164, 0.308685, 0, -0.308685, 0.951164, 0, 0.69196, 1.77512)
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1602662922]
+transform = Transform3D(0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0, 1, 82.17165, 47.575806, -0.5)
+use_collision = true
+size = Vector3(190.30322, 1, 20)
 
-[node name="Stairs" type="Node3D" parent="."]
-script = ExtResource("1_r150o")
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=272231296]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.747963, 10.520809, 0)
+shadow_enabled = true
+omni_range = 94.07178
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00507, -0.761877)
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=511484918]
+transform = Transform3D(-0.06406212, -0.9979459, 0, 0.9979459, -0.06406212, 0, 0, 0, 1, -1.040184, 15.005001, -0.88290405)
+use_collision = true
+size = Vector3(37.27356, 1, 20)
+
+[node name="PlayerBall" parent="." unique_id=7784179 instance=ExtResource("1_r150o")]
+transform = Transform3D(-0.56453484, -2.9802322e-08, -0.8254091, 0, 0.9999998, 0, 0.8254092, 0, -0.5645349, 148.80486, 96.422905, -5.738475)

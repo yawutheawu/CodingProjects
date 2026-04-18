@@ -8,9 +8,10 @@
 <body>
     <div class="Container">
         <h2 class="inputInstruction">Password Reset</h2>
-        <form class="front" method="POST" action="/forgot-password/">
+        <form class="front" method="POST" action="{{ url_for('checkEmail') }}">
             <div class="SubForm">
                 <div class="input">
+                    <input type="hidden" name="email" value="{{ email }}">
                     <input type="reset_code" class="form-control" id="reset_code" name="reset_code" placeholder="Reset Code" required>
                 </div>
             </div>
