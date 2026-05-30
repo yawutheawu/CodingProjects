@@ -1,0 +1,30 @@
+li a {
+    color: green;
+}
+
+a {
+    color: darkgreen;
+}
+
+a:visited {
+    color: darkgreen;
+}
+
+a:hover {
+    color: lightgreen;
+}
+
+a:active {
+    color: darkblue;
+}
+
+li {
+    list-style-type: none;
+    background-color: lightgray;
+    padding: 1em;
+    width: 25%;
+    height: auto;
+    border: 0.1em solid black;
+    border-bottom: 0.05em solid black; 
+    border-top: 0.05em solid black; 
+}

@@ -3,4 +3,4 @@
 
 
 # Bookmark
-- at "Removing hardcoded URLs in templates" in [This tutorial](https://docs.djangoproject.com/en/6.0/intro/tutorial03/)
+- at "Customize the admin form" in [This tutorial](https://docs.djangoproject.com/en/6.0/intro/tutorial07/)

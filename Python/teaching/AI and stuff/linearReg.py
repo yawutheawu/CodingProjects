@@ -3,7 +3,7 @@ import numpy as np
 import random as r
 import scipy
 
-datapoints = 25
+datapoints = 2500
 theoryM = 1.5
 theoryB = 10
 
@@ -12,9 +12,10 @@ randLower = -100
 
 rng = np.random.default_rng()
 
+
 x = [x for x in range(datapoints)]
-# y = [rng.normal(loc=theoryM * x + theoryB, scale=2.0, size=None) for x in range(datapoints)]
-y = [r.randrange(randLower, randUpper) for x in range(datapoints)]
+y = [rng.normal(loc=theoryM * x + theoryB, scale=1000.0, size=None) for x in range(datapoints)]
+#y = [r.randrange(randLower, randUpper) for x in range(datapoints)]
 
 linRegression = scipy.stats.linregress(x, y)
 
