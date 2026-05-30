@@ -2,3 +2,4 @@
 - [[https://www.w3schools.com/python/python_ml_getting_started.asp]]
 - [[https://huggingface.co/human-centered-summarization/financial-summarization-pegasus]]
 - [[https://ollama.com/library/llama3.1]], [[https://ollama.com/download/windows]]
+- [[https://huggingface.co/nvidia/LocateAnything-3B]]
