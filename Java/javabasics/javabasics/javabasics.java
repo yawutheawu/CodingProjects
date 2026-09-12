@@ -25,12 +25,12 @@ public class javabasics {
 //			System.out.println("No");
 //		}
 
-		char oper = '+';
+		String oper = "+";
 		int a = 10;
 		int b = 5;
-		if (oper == '+') {
+		if (oper.equals("+")) {
 			System.out.println(a + b);
-		} else if (oper == '-') {
+		} else if (oper.equals("-")) {
 			System.out.println(a - b);
 		} else {
 			System.out.println("Bad Input");
