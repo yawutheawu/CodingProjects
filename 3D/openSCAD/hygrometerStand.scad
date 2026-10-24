@@ -10,6 +10,7 @@ holderWallThickness = 10;
 holderDepth = 10;
 
 //Hygrometer Angle
+holderAngle = 45; // [0:90]
 
 /* [Base] */
 //Vertical Thickness of holder base in mm
@@ -26,7 +27,7 @@ postHeight = 35;
 postRadius = 7;
 
 //Faces used to render the post (4 for a square etc.)
-postQuality = 8; // [4:100]
+postQuality = 12; // [4:100]
 
 
 
@@ -37,8 +38,30 @@ module torus(radius = 5, thickness = 1, resolution = 55){
     
 }
 
+difference() {
+    difference() {
+        union() {
+            //hoop
+            translate([-(sin(90 - holderAngle) * (hygrometerDiameter/2 + holderWallThickness/2)),0,-((hygrometerDiameter/2 + holderWallThickness) - (cos(90 -  holderAngle) * (hygrometerDiameter/2 + holderWallThickness)))]) 
+            translate([-holderDepth/2,0,hygrometerDiameter/2 + baseThickness + postHeight + holderWallThickness]) 
+            rotate([0,holderAngle,0])  rotate_extrude(angle=360,convexity=10,$fn=85) 
+            translate([hygrometerDiameter/2,0,0]) square([10,holderDepth]);
 
-
+            // extrapost
+            rotate([0,0,45]) 
+            translate([0,0,baseThickness+postHeight]) 
+            cylinder(
+                h = ( holderAngle > 0 ? sin(holderAngle) * (holderDepth + (tan(90-holderAngle)  * holderWallThickness)) : holderDepth), 
+                r = postRadius,$fn = postQuality);
+        }
+        translate([-(sin(90 - holderAngle) * (hygrometerDiameter/2 + holderWallThickness/2)) - holderDepth * cos(90-holderAngle),0,-((hygrometerDiameter/2 + holderWallThickness) - (cos(90 -  holderAngle) * (hygrometerDiameter/2 + holderWallThickness))) - holderDepth * sin(90-holderAngle)]) 
+        translate([-holderDepth/2,0,hygrometerDiameter/2 + baseThickness + postHeight + holderWallThickness]) 
+        rotate([0,holderAngle,0])  cylinder(h = holderDepth*2 + postRadius, r = hygrometerDiameter/2,$fn=85);
+    }
+    translate([-(sin(90 - holderAngle) * (hygrometerDiameter/2 + holderWallThickness/2)) + holderDepth * cos(90-holderAngle),0,-((hygrometerDiameter/2 + holderWallThickness) - (cos(90 -  holderAngle) * (hygrometerDiameter/2 + holderWallThickness))) + holderDepth * sin(90-holderAngle)]) 
+    translate([-holderDepth/2,0,hygrometerDiameter/2 + baseThickness + postHeight + holderWallThickness]) 
+    rotate([0,holderAngle,0])  cylinder(h = holderDepth, r = hygrometerDiameter/2 + holderWallThickness*1.5 + postRadius,$fn=85);
+}
 // Holder Construction
 
 union() {
@@ -47,8 +70,8 @@ union() {
     rotate([0,0,45]) 
     cylinder(
         h=baseThickness,
-        r1=(hygrometerDiameter + holderWallThickness + baseThickness*2)/sqrt(2), 
-        r2 = (hygrometerDiameter + holderWallThickness)/sqrt(2),center=true, $fn = 4);
+        r1=(hygrometerDiameter*1.2 + holderWallThickness + baseThickness*2)/sqrt(2), 
+        r2 = (hygrometerDiameter*1.2 + holderWallThickness)/sqrt(2),center=true, $fn = 4);
 
     //post
     rotate([0,0,45]) translate([0,0,baseThickness]) cylinder(h = postHeight, r = postRadius, $fn = postQuality);
