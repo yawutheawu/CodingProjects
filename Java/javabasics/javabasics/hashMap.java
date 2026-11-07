@@ -48,10 +48,12 @@ public class hashMap {
 //        }
         
         System.out.println("\n--- All Entries Long ---");
+        // .entrySet() -> key value pair array .keySet() -> Key Array .values() -> value array
         for (Map.Entry<String, String> entry : mutableMapLong.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
-        
+        System.out.println("\n");
+        System.out.println(mutableMapLong.size());
         //remove key/val from hashmap
         mutableMapLong.remove("Orange");
         
@@ -59,7 +61,8 @@ public class hashMap {
         for (Map.Entry<String, String> entry : mutableMapLong.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
-        
+        System.out.println("\n");
+        System.out.println(mutableMapLong.size());
         //clear HashMap
         mutableMapLong.clear();
         
@@ -67,7 +70,8 @@ public class hashMap {
         for (Map.Entry<String, String> entry : mutableMapLong.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
-        
+        System.out.println("\n");
+        System.out.println(mutableMapLong.size());
 	}
 
 }
