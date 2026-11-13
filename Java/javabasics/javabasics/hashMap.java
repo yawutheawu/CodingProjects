@@ -54,6 +54,7 @@ public class hashMap {
         }
         System.out.println("\n");
         System.out.println(mutableMapLong.size());
+        
         //remove key/val from hashmap
         mutableMapLong.remove("Orange");
         
