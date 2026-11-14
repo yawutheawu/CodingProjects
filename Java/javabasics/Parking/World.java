@@ -3,6 +3,7 @@ package Parking;
 public class World {
 	public static void main(String args[]) {
 		Car x = new Car("Black","4HZG97", "BMW", "M240i Comp");
+		x.alertAhead();
 		Garage y = new Garage("General Nathans Mermorial Garage",6);
 		System.out.println(x);
 		System.out.println(y.getName());

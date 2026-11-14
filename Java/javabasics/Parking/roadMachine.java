@@ -58,4 +58,8 @@ public class roadMachine {
 		this.Parked = newPark;
 	}
 	
+	public void alertAhead() {
+		System.out.println(this.Make + " " +  this.Model + " honks");
+	}
+	
 }
