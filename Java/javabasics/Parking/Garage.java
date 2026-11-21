@@ -1,5 +1,7 @@
 package Parking;
 
+import java.util.Arrays;
+
 public class Garage {
 	/*
 	 * Size of Garage
@@ -9,11 +11,31 @@ public class Garage {
 	private String garageName;
 	private int garageSize;
 	private Car[] spots;
+	
+	public Garage() {
+		this("Test Garage", 10);
+	}
+	
+	public Garage(int GarageSize) {
+		this.garageName = "";
+		this.garageSize = GarageSize;
+		this.spots = new Car[GarageSize];
+	}
 
 	public Garage(String Name, int Size) {
 		this.garageName = Name;
 		this.garageSize = Size;
 		this.spots = new Car[Size];
+	}
+	
+	public static int binarySearch(int[] x, int target, int indexMod) {
+			if (x[x.length/2] == target) {
+				return x.length/2 + indexMod;
+			} else if (x[x.length/2] > target) {
+				return binarySearch(Arrays.copyOfRange(x, 0, x.length/2), target, indexMod);
+			} else {
+				return binarySearch(Arrays.copyOfRange(x, x.length/2, x.length), target, indexMod + x.length/2);
+			}
 	}
 
 	//Temp or Dev function
